@@ -1,4 +1,4 @@
-# tottpcgi
+# puppet-totpcgi
 
 [![Build Status](https://travis-ci.org/herlo/puppet-totpcgi.png)](https://travis-ci.org/herlo/puppet-totpcgi)
 
