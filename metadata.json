@@ -1,0 +1,23 @@
+{
+  "name": "puppet-totpcgi",
+  "version": "0.1.0",
+  "author": "herlo",
+  "summary": "CGI gateway for Time-based One-Time Passwords",
+  "license": "Apache-2.0",
+  "source": "https://github.com/herlo/puppet-totpcgi.git",
+  "project_page": "https://github.com/herlo/puppet-tottpcgi",
+  "issues_url": "https://github.com/herlo/puppet-totpcgi/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [ "7.0" ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": "4.4.x"
+    },
+  ]
+}
+
