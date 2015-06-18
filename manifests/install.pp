@@ -19,8 +19,8 @@
 #
 
 class totpcgi::install (
-  $install_totpcgi,
-) {
+  $install_totpcgi = $totpcgi::params::install_totpcgi,
+) inherits totpcgi::params {
   validate_bool($install_totpcgi)
 
   if ($install_totpcgi) {
