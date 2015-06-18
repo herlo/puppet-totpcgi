@@ -27,7 +27,7 @@ class totpcgi::install (
 
     include totpcgi::repo
 
-    package { 'totpcgi', 'totpcgi-selinux', 'totpcgi-provisioning':
+    package { ['totpcgi', 'totpcgi-selinux', 'totpcgi-provisioning']:
       require => Class['::totpcgi::repo']
     }
 
