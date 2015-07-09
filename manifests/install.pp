@@ -20,6 +20,7 @@
 
 class totpcgi::install (
   $install_totpcgi = $totpcgi::params::install_totpcgi,
+  $install_qrcode = $totpcgi::params::install_qrcode,
 ) inherits totpcgi::params {
   validate_bool($install_totpcgi)
 
@@ -30,7 +31,15 @@ class totpcgi::install (
     package { ['totpcgi', 'totpcgi-selinux', 'totpcgi-provisioning']:
       require => Class['::totpcgi::repo']
     }
-
   }
+
+  # since python-qrcode isn't technically required, let's make it optional
+  # the default will be to install the package, however
+  if ($install_qrcode) {
+
+    package { 'python-qrcode':
+    }
+  }
+
 
 }

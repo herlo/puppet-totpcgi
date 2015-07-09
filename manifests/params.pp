@@ -16,4 +16,5 @@
 #
 class totpcgi::params {
   $install_totpcgi    = true
+  $install_qrcode     = true
 }
