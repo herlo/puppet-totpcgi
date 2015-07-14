@@ -91,58 +91,65 @@
 # @License Apache-2.0 <http://spdx.org/licenses/Apache-2.0>
 #
 class totpcgi (
-  $configuration,
-  $configuration_file = $totpcgi::params::configuration_file,
-  $group              = $totpcgi::params::group,
-  $user               = $totpcgi::params::user,
-  $user_home          = $totpcgi::params::user_home,
-  $venv_path          = $totpcgi::params::venv_path,
-  $vcs_path           = $totpcgi::params::vcs_path,
-  $vcs_source         = $totpcgi::params::vcs_source,
-  $vcs_type           = $totpcgi::params::vcs_type,
-  $vcs_revision       = undef
+  $install_totpcgi                  = $totpcgi::params::install_totpcgi,
+  $install_qrcode                   = $totpcgi::params::install_pincode,
+  $require_pincode                  = $totpcgi::params::require_pincode,
+  $success_string                   = $totpcgi::params::success_string,
+  $encrypt_secret                   = $totpcgi::params::encrypt_secret,
+  $window_size                      = $totpcgi::params::window_size,
+  $rate_limit                       = $totpcgi::params::rate_limit,
+  $scratch_tokens_n                 = $totpcgi::params::scratch_tokens_n,
+  $bits                             = $totpcgi::params::bits,
+  $totp_user_mask                   = $totpcgi::params::totp_user_mask,
+  $action_url                       = $totpcgi::params::action_url,
+  $css_root                         = $totpcgi::params::css_root,
+  $templates_dir                    = $totpcgi::params::templates_dir,
+  $trust_http_auth                  = $totpcgi::params::trust_http_auth,
+  $secret::engine                   = $totpcgi::params::secret::engine,
+  $secret::secrets_dir              = $totpcgi::params::secret::secrets_dir,
+  $secret::pg_connect_string        = $totpcgi::params::secret::pg_connect_string,
+  $secret::mysql_connect_host       = $totpcgi::params::secret::mysql_connect_host,
+  $secret::mysql_connect_user       = $totpcgi::params::secret::mysql_connect_user,
+  $secret::mysql_connect_password   = $totpcgi::params::secret::mysql_connect_password,
+  $secret::mysql_connect_db         = $totpcgi::params::secret::mysql_connect_db,
+  $secret::ldap_url                 = $totpcgi::params::secret::ldap_url,
+  $secret::ldap_dn                  = $totpcgi::params::secret::ldap_dn,
+  $secret::ldap_cacert              = $totpcgi::params::secret::ldap_cacert,
+  $pincode::engine                  = $totpcgi::params::pincode::engine,
+  $pincode::usehash                 = $totpcgi::params::pincode::usehash,
+  $pincode::makedb                  = $totpcgi::params::pincode::makedb,
+  $pincode::pincode_file            = $totpcgi::params::pincode::pincode_file,
+  $pincode::pg_connect_string       = $totpcgi::params::pincode::pg_connect_string,
+  $pincode::mysql_connect_host      = $totpcgi::params::pincode::mysql_connect_host,
+  $pincode::mysql_connect_user      = $totpcgi::params::pincode::mysql_connect_user,
+  $pincode::mysql_connect_password  = $totpcgi::params::pincode::mysql_connect_password,
+  $pincode::mysql_connect_db        = $totpcgi::params::pincode::mysql_connect_db,
+  $pincode::ldap_url                = $totpcgi::params::pincode::ldap_url,
+  $pincode::ldap_dn                 = $totpcgi::params::pincode::ldap_dn,
+  $pincode::ldap_cacert             = $totpcgi::params::pincode::ldap_cacert,
+  $state::engine                    = $totpcgi::params::state::engine,
+  $state::pg_connect_string         = $totpcgi::params::state::pg_connect_string,
+  $state::mysql_connect_host        = $totpcgi::params::state::mysql_connect_host,
+  $state::mysql_connect_user        = $totpcgi::params::state::mysql_connect_user,
+  $state::mysql_connect_password    = $totpcgi::params::state::mysql_connect_password,
+  $state::mysql_connect_db          = $totpcgi::params::state::mysql_connect_db,
+  $state::ldap_url                  = $totpcgi::params::state::ldap_url,
+  $state::ldap_dn                   = $totpcgi::params::state::ldap_dn,
+  $state::ldap_cacert               = $totpcgi::params::state::ldap_cacert,
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
-  validate_hash($configuration)
-  validate_absolute_path($configuration_file)
-  validate_string($group)
-  validate_string($user)
-  validate_absolute_path($user_home)
-  validate_absolute_path($venv_path)
-  validate_absolute_path($vcs_path)
-  validate_string($vcs_source)
-  validate_string($vcs_type)
-
-  if ($vcs_revision != undef) {
-    validate_string($vcs_revision)
-  }
+  validate_absolute_path($secrets_dir)
+  validate_string($secret::engine)
 
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
-  class { 'totpcgi::install':
-    group        => $group,
-    user         => $user,
-    user_home    => $user_home,
-    venv_path    => $venv_path,
-    vcs_path     => $vcs_path,
-    vcs_source   => $vcs_source,
-    vcs_type     => $vcs_type,
-    vcs_revision => $vcs_revision,
-  }
-
-  class { 'totpcgi::config':
-    configuration      => $configuration,
-    configuration_file => $configuration_file,
-    group              => $group,
-    user               => $user,
-  }
-
+  include totpcgi::config
   include totpcgi::service
 
   Anchor['totpcgi::begin'] ->
     Class['totpcgi::install'] ->
     Class['totpcgi::config'] ->
-    Class['totpcgi::service'] ->
+#    Class['totpcgi::service'] ->
   Anchor['totpcgi::end']
 }
