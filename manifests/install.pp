@@ -19,10 +19,9 @@
 #
 
 class totpcgi::install (
-  $install_totpcgi = $totpcgi::params::install_totpcgi,
-  $install_qrcode = $totpcgi::params::install_qrcode,
-) inherits totpcgi::params {
+) inherits totpcgi {
   validate_bool($install_totpcgi)
+  validate_bool($install_qrcode)
 
   if ($install_totpcgi) {
 
