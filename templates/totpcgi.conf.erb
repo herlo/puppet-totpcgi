@@ -1,0 +1,69 @@
+##################################
+# This file is managed by puppet #
+#     DO NOT EDIT DIRECTLY       #
+##################################
+
+[main]
+require_pincode = <%= @require_pincode %>
+success_string = <%= @success_string %>
+
+[secret_backend]
+engine = <%= @secret::engine %>
+
+<% if @secret::engine == 'file' %>
+secrets_dir = <%= @secret::secrets_dir %>
+<% end %>
+
+<% if @secret::engine == 'pgsql' %>
+pg_connect_string = <%= @secret::pg_connect_string %>
+<% end %>
+
+<% if @secret::engine == 'pgsql' %>
+mysql_connect_host = <%= @secret::mysql_connect_host %>
+mysql_connect_user = <%= @secret::mysql_connect_user %>
+mysql_connect_password = <%= @secret::mysql_connect_password %>
+mysql_connect_db = <%= @secret::mysql_connect_db %>
+<% end %>
+
+[pincode_backend]
+engine = <%= @pincode::engine %>
+
+<% if @secret::engine == 'file' %>
+pincode_file = <%= @pincode::pincode_file %>
+<% end %>
+
+<% if @pincode::engine == 'pgsql' %>
+pg_connect_string = <%= @pincode::pg_connect_string %>
+<% end %>
+
+<% if @pincode::engine == 'pgsql' %>
+mysql_connect_host = <%= @pincode::mysql_connect_host %>
+mysql_connect_user = <%= @pincode::mysql_connect_user %>
+mysql_connect_password = <%= @pincode::mysql_connect_password %>
+mysql_connect_db = <%= @pincode::mysql_connect_db %>
+<% end %>
+
+<% if @pincode::engine = 'ldap' %>
+ldap_url    = <%= @pincode::ldap_url %>
+ldap_dn     = <%= @pincode::ldap_dn %>
+ldap_cacert = <%= @pincode::ldap_cacert %>
+<% end %>
+
+[state_backend]
+engine = <%= @state::engine %>
+<% if @state::engine == 'file' %>
+state_dir = <%= @state::state_dir %>
+<% end %>
+
+<% if @state::engine == 'pgsql' %>
+pg_connect_string = <%= @state::pg_connect_string %>
+<% end %>
+
+<% if @state::engine == 'pgsql' %>
+mysql_connect_host = <%= @state::mysql_connect_host %>
+mysql_connect_user = <%= @state::mysql_connect_user %>
+mysql_connect_password = <%= @state::mysql_connect_password %>
+mysql_connect_db = <%= @state::mysql_connect_db %>
+<% end %>
+
+
