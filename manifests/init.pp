@@ -144,18 +144,17 @@ class totpcgi (
   $state_ldap_cacert                = $totpcgi::params::state_ldap_cacert,
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
-  validate_absolute_path($secrets_dir)
-  validate_string($secret::engine)
 
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
-  include totpcgi::config
-  include totpcgi::service
+  include totpcgi::install
+#  include totpcgi::config
+#  include totpcgi::service
 
   Anchor['totpcgi::begin'] ->
     Class['totpcgi::install'] ->
-    Class['totpcgi::config'] ->
+#    Class['totpcgi::config'] ->
 #    Class['totpcgi::service'] ->
   Anchor['totpcgi::end']
 }
