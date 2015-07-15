@@ -43,7 +43,7 @@ mysql_connect_password = <%= @pincode_mysql_connect_password %>
 mysql_connect_db = <%= @pincode_mysql_connect_db %>
 <% end %>
 
-<% if @pincode_engine = 'ldap' %>
+<% if @pincode_engine == 'ldap' %>
 ldap_url    = <%= @pincode_ldap_url %>
 ldap_dn     = <%= @pincode_ldap_dn %>
 ldap_cacert = <%= @pincode_ldap_cacert %>
