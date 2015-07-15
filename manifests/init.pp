@@ -142,7 +142,7 @@ class totpcgi (
   validate_string($secret::engine)
 
   anchor { 'totpcgi::begin': }
-  anchor { 'totpcgi::end': }
+  anchor { 'totpcgi::end' }
 
   include totpcgi::config
   include totpcgi::service
