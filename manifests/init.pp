@@ -93,6 +93,12 @@
 class totpcgi (
   $install_totpcgi                  = $totpcgi::params::install_totpcgi,
   $install_qrcode                   = $totpcgi::params::install_pincode,
+  $totpcgi_config                   = $totpcgi::params::totpcgi_config,
+  $totpcgi_owner                    = $totpcgi::params::totpcgi_owner,
+  $totpcgi_group                    = $totpcgi::params::totpcgi_group,
+  $provisioning_config              = $totpcgi::params::totpcgiprov_config,
+  $provisioning_owner               = $totpcgi::params::totpcgiprov_owner,
+  $provisioning_group               = $totpcgi::params::totpcgiprov_group,
   $require_pincode                  = $totpcgi::params::require_pincode,
   $success_string                   = $totpcgi::params::success_string,
   $encrypt_secret                   = $totpcgi::params::encrypt_secret,
