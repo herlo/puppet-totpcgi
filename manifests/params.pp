@@ -38,7 +38,6 @@ class totpcgi::params {
   $provisioning_owner         = 'root'
   $provisioning_group         = 'totpcgiprov'
 
-}
   # different backends and respective settings
 
   # secret backend
