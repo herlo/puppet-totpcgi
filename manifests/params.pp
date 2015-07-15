@@ -42,7 +42,7 @@ class totpcgi::params {
 
   # secret backend
   $secret_engine             = 'file'
-  $secret_secrets_dir        = '/etc/totpcgi/totp'
+  $secrets_dir               = '/etc/totpcgi/totp'
   $secret_pg_connect_string  = 'user= password= host= dbname='
   $secret_mysql_connect_host = ''
   $secret_mysql_connect_user = ''

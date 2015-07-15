@@ -106,7 +106,7 @@ class totpcgi (
   $templates_dir                    = $totpcgi::params::templates_dir,
   $trust_http_auth                  = $totpcgi::params::trust_http_auth,
   $secret_engine                    = $totpcgi::params::secret_engine,
-  $secret_secrets_dir               = $totpcgi::params::secret_secrets_dir,
+  $secrets_dir                      = $totpcgi::params::secrets_dir,
   $secret_pg_connect_string         = $totpcgi::params::secret_pg_connect_string,
   $secret_mysql_connect_host        = $totpcgi::params::secret_mysql_connect_host,
   $secret_mysql_connect_user        = $totpcgi::params::secret_mysql_connect_user,

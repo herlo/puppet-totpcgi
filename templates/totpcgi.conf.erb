@@ -11,7 +11,7 @@ success_string = <%= @success_string %>
 engine = <%= @secret_engine %>
 
 <% if @secret_engine == 'file' %>
-secrets_dir = <%= @secret_secrets_dir %>
+secrets_dir = <%= @secrets_dir %>
 <% end %>
 
 <% if @secret_engine == 'pgsql' %>
