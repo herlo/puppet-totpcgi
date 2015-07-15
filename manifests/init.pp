@@ -141,7 +141,7 @@ class totpcgi (
   $state_mysql_connect_db           = $totpcgi::params::state_mysql_connect_db,
   $state_ldap_url                   = $totpcgi::params::state_ldap_url,
   $state_ldap_dn                    = $totpcgi::params::state_ldap_dn,
-  $state_ldap_cacert                = $totpcgi::params::state_ldap_cacert,
+  $state_ldap_cacert                = $totpcgi::params::state_ldap_cacert
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
 
