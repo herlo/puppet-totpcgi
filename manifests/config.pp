@@ -46,7 +46,7 @@ class totpcgi::config inherits totpcgi {
   }
 
   if $pincode_engine == "ldap" {
-    file { "$pincode_ldap_cacert"
+    file { "$pincode_ldap_cacert":
       ensure  => file,
     }
   }
