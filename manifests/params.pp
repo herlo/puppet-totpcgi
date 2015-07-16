@@ -56,7 +56,7 @@ class totpcgi::params {
   $pincode_engine             = 'file'
   $pincode_usehash            = 'sha256'
   $pincode_makedb             = 'True'
-  $pincode_pincode_file       = '/etc/totpcgi/pincodes'
+  $pincode_file               = '/etc/totpcgi/pincodes'
   $pincode_pg_connect_string  = 'user= password= host= dbname='
   $pincode_mysql_connect_host = ''
   $pincode_mysql_connect_user = ''
@@ -68,7 +68,7 @@ class totpcgi::params {
 
   # state backend
   $state_engine             = 'file'
-  $state_state_dir          = '/var/lib/totpcgi'
+  $state_dir                = '/var/lib/totpcgi'
   $state_pg_connect_string  = 'user= password= host= dbname='
   $state_mysql_connect_host = ''
   $state_mysql_connect_user = ''
