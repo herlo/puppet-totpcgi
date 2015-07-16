@@ -9,61 +9,52 @@ success_string = <%= @success_string %>
 
 [secret_backend]
 engine = <%= @secret_engine %>
-
-<% if @secret_engine == 'file' %>
+<% if @secret_engine == 'file' -%>
 secrets_dir = <%= @secrets_dir %>
-<% end %>
-
-<% if @secret_engine == 'pgsql' %>
+<% end -%>
+<% if @secret_engine == 'pgsql' -%>
 pg_connect_string = <%= @secret_pg_connect_string %>
-<% end %>
-
-<% if @secret_engine == 'pgsql' %>
+<% end -%>
+<% if @secret_engine == 'mysql' -%>
 mysql_connect_host = <%= @secret_mysql_connect_host %>
 mysql_connect_user = <%= @secret_mysql_connect_user %>
 mysql_connect_password = <%= @secret_mysql_connect_password %>
 mysql_connect_db = <%= @secret_mysql_connect_db %>
-<% end %>
+<% end -%>
 
 [pincode_backend]
 engine = <%= @pincode_engine %>
-
-<% if @secret_engine == 'file' %>
+<% if @secret_engine == 'file' -%>
 pincode_file = <%= @pincode_pincode_file %>
-<% end %>
-
-<% if @pincode_engine == 'pgsql' %>
+<% end -%>
+<% if @pincode_engine == 'pgsql' -%>
 pg_connect_string = <%= @pincode_pg_connect_string %>
-<% end %>
-
-<% if @pincode_engine == 'pgsql' %>
+<% end -%>
+<% if @pincode_engine == 'mysql' -%>
 mysql_connect_host = <%= @pincode_mysql_connect_host %>
 mysql_connect_user = <%= @pincode_mysql_connect_user %>
 mysql_connect_password = <%= @pincode_mysql_connect_password %>
 mysql_connect_db = <%= @pincode_mysql_connect_db %>
-<% end %>
-
-<% if @pincode_engine == 'ldap' %>
+<% end -%>
+<% if @pincode_engine == 'ldap' -%>
 ldap_url    = <%= @pincode_ldap_url %>
 ldap_dn     = <%= @pincode_ldap_dn %>
 ldap_cacert = <%= @pincode_ldap_cacert %>
-<% end %>
+<% end -%>
 
 [state_backend]
 engine = <%= @state_engine %>
-<% if @state_engine == 'file' %>
+<% if @state_engine == 'file' -%>
 state_dir = <%= @state_state_dir %>
-<% end %>
-
-<% if @state_engine == 'pgsql' %>
+<% end -%>
+<% if @state_engine == 'pgsql' -%>
 pg_connect_string = <%= @state_pg_connect_string %>
-<% end %>
-
-<% if @state_engine == 'pgsql' %>
+<% end -%>
+<% if @state_engine == 'mysql' -%>
 mysql_connect_host = <%= @state_mysql_connect_host %>
 mysql_connect_user = <%= @state_mysql_connect_user %>
 mysql_connect_password = <%= @state_mysql_connect_password %>
 mysql_connect_db = <%= @state_mysql_connect_db %>
-<% end %>
+<% end -%>
 
 
