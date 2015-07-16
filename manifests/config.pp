@@ -19,7 +19,7 @@ class totpcgi::config inherits totpcgi {
   }
 
   if $state_engine == "file" {
-    file { "$state_dir"
+    file { "$state_dir":
       ensure  => directory,
       owner   => $provisioning_owner,
       group   => $totpcgi_group,
@@ -28,7 +28,7 @@ class totpcgi::config inherits totpcgi {
   }
 
   if $secret_engine == "file" {
-    file { "$secrets_dir"
+    file { "$secrets_dir":
       ensure  => directory,
       owner   => $provisioning_owner,
       group   => $totpcgi_group,
@@ -37,7 +37,7 @@ class totpcgi::config inherits totpcgi {
   }
 
   if $pincode_engine == "file" {
-    file { "$pincode_file"
+    file { "$pincode_file":
       ensure  => directory,
       owner   => $totpcgi_owner,
       group   => $totpcgi_group,
