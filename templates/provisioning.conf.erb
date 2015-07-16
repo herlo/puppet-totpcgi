@@ -22,7 +22,7 @@ makedb = <%= @pincode_makedb %>
 [secret_backend]
 engine = <%= @secret_engine %>
 <% if @secret_engine == 'file' -%>
-secrets_dir = <%= @secret_secrets_dir %>
+secrets_dir = <%= @secrets_dir %>
 <% end -%>
 <% if @secret_engine == 'pgsql' -%>
 pg_connect_string = <%= @secret_pg_connect_string %>
