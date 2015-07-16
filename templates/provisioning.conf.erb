@@ -58,7 +58,7 @@ ldap_cacert = <%= @pincode_ldap_cacert %>
 [state_backend]
 engine = <%= @state_engine %>
 <% if @state_engine == 'file' -%>
-state_dir = <%= @state_state_dir %>
+state_dir = <%= @state_dir %>
 <% end -%>
 <% if @state_engine == 'pgsql' -%>
 pg_connect_string = <%= @state_pg_connect_string %>
