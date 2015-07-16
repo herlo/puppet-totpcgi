@@ -124,7 +124,7 @@ class totpcgi (
   $pincode_engine                   = $totpcgi::params::pincode_engine,
   $pincode_usehash                  = $totpcgi::params::pincode_usehash,
   $pincode_makedb                   = $totpcgi::params::pincode_makedb,
-  $pincode_file                     = $totpcgi::params::pincode_pincode_file,
+  $pincode_file                     = $totpcgi::params::pincode_file,
   $pincode_pg_connect_string        = $totpcgi::params::pincode_pg_connect_string,
   $pincode_mysql_connect_host       = $totpcgi::params::pincode_mysql_connect_host,
   $pincode_mysql_connect_user       = $totpcgi::params::pincode_mysql_connect_user,
