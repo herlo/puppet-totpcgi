@@ -142,7 +142,21 @@ class totpcgi (
   $state_mysql_connect_db           = $totpcgi::params::state_mysql_connect_db,
   $state_ldap_url                   = $totpcgi::params::state_ldap_url,
   $state_ldap_dn                    = $totpcgi::params::state_ldap_dn,
-  $state_ldap_cacert                = $totpcgi::params::state_ldap_cacert
+  $state_ldap_cacert                = $totpcgi::params::state_ldap_cacert,
+  $port                             = $totpcgi::params::port,
+  $servername                       = $totpcgi::params::servername,
+  $serveradmin                      = $totpcgi::params::serveradmin,
+  $docroot                          = $totpcgi::params::docroot,
+  $suexec_user_group                = $totpcgi::params::suexec_user_group,
+  $ssl                              = $totpcgi::params::ssl,
+  $ssl_cacert                       = $totpcgi::params::ssl_cacert,
+  $ssl_cert                         = $totpcgi::params::ssl_cert,
+  $ssl_key                          = $totpcgi::params::ssl_key,
+  $ssl_verify_depth                 = $totpcgi::params::ssl_verify_depth,
+  $ssl_verify_client                = $totpcgi::params::ssl_verify_client,
+  $error_log_file                   = $totpcgi::params::error_log_file,
+  $access_log_file                  = $totpcgi::params::access_log_file,
+  $directories                      = $totpcgi::params::directories
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
 
