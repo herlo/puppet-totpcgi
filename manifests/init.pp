@@ -151,7 +151,7 @@ class totpcgi (
 
   include totpcgi::install
   include totpcgi::config
-#  include totpcgi::service
+  include totpcgi::service
 
   Anchor['totpcgi::begin'] ->
     Class['totpcgi::install'] ->

@@ -15,5 +15,10 @@
 # @License Apache-2.0 <http://spdx.org/licenses/Apache-2.0>
 #
 class totpcgi::service (
-) {
+) inherits totpcgi {
+
+  class { 'apache':
+    default_vhost => false,
+  }
+
 }
