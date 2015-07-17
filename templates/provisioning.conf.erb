@@ -27,7 +27,6 @@ secrets_dir = <%= @secrets_dir %>
 <% if @secret_engine == 'pgsql' -%>
 pg_connect_string = <%= @secret_pg_connect_string %>
 <% end -%>
-
 <% if @secret_engine == 'mysql' -%>
 mysql_connect_host = <%= @secret_mysql_connect_host %>
 mysql_connect_user = <%= @secret_mysql_connect_user %>

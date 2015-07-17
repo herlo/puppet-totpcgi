@@ -38,7 +38,7 @@ class totpcgi::config inherits totpcgi {
 
   if $pincode_engine == "file" {
     file { "$pincode_file":
-      ensure  => directory,
+      ensure  => file,
       owner   => $totpcgi_owner,
       group   => $totpcgi_group,
       mode    => '0640',
