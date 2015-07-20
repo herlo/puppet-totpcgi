@@ -143,6 +143,7 @@ class totpcgi (
   $state_ldap_url                   = $totpcgi::params::state_ldap_url,
   $state_ldap_dn                    = $totpcgi::params::state_ldap_dn,
   $state_ldap_cacert                = $totpcgi::params::state_ldap_cacert,
+  $vhost_name                       = $totpcgi::params::vhost_name,
   $port                             = $totpcgi::params::port,
   $servername                       = $totpcgi::params::servername,
   $serveradmin                      = $totpcgi::params::serveradmin,

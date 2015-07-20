@@ -79,6 +79,7 @@ class totpcgi::params {
   $state_ldap_cacert        = '/etc/pki/tls/certs/ipa-ca.crt'
 
   # apache configs
+  $vhost_name               = undef
   $port                     = '8443'
   $servername               = undef
   $serveradmin              = undef
