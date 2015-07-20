@@ -28,6 +28,7 @@ class totpcgi::service (
     docroot           => $docroot,
     suexec_user_group => $suexec_user_group,
     ssl               => $ssl,
+    ssl_certs_dir     => $ssl_certs_dir,
     ssl_ca            => $ssl_cacert,
     ssl_cert          => $ssl_cert,
     ssl_key           => $ssl_key,

@@ -150,6 +150,7 @@ class totpcgi (
   $docroot                          = $totpcgi::params::docroot,
   $suexec_user_group                = $totpcgi::params::suexec_user_group,
   $ssl                              = $totpcgi::params::ssl,
+  $ssl_certs_dir                    = $totpcgi::params::ssl_certs_dir,
   $ssl_cacert                       = $totpcgi::params::ssl_cacert,
   $ssl_cert                         = $totpcgi::params::ssl_cert,
   $ssl_key                          = $totpcgi::params::ssl_key,
