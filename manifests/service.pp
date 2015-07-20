@@ -27,15 +27,15 @@ class totpcgi::service (
     serveradmin       => $serveradmin,
     docroot           => $docroot,
     suexec_user_group => $suexec_user_group,
-    ssl               => $ssl
-    ssl_cacert        => $ssl_cacert
-    ssl_cert          => $ssl_cert
-    ssl_key           => $ssl_key
-    ssl_verify_client => $ssl_verify_client
-    ssl_verify_depth  => $ssl_verify_depth
-    error_log_file    => $error_log_file
-    access_log_file   => $access_log_file
-    directories       => $directories
+    ssl               => $ssl,
+    ssl_cacert        => $ssl_cacert,
+    ssl_cert          => $ssl_cert,
+    ssl_key           => $ssl_key,
+    ssl_verify_client => $ssl_verify_client,
+    ssl_verify_depth  => $ssl_verify_depth,
+    error_log_file    => $error_log_file,
+    access_log_file   => $access_log_file,
+    directories       => $directories,
 
 #    # Use this for totp.cgi
 #    AddHandler cgi-script .cgi
