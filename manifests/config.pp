@@ -2,6 +2,13 @@
 
 class totpcgi::config inherits totpcgi {
 
+  file { "$totpcgi_config_dir":
+    ensure  => directory,
+    owner   => $provisioning_owner,
+    group   => $totpcgi_group,
+    mode    => '0750',
+  }
+
   file { "$totpcgi_config":
     ensure  => file,
     owner   => $totpcgi_owner,
@@ -18,15 +25,6 @@ class totpcgi::config inherits totpcgi {
     content => template('totpcgi/provisioning.conf.erb'),
   }
 
-  if $state_engine == "file" {
-    file { "$state_dir":
-      ensure  => directory,
-      owner   => $provisioning_owner,
-      group   => $totpcgi_group,
-      mode    => '0770',
-    }
-  }
-
   if $secret_engine == "file" {
     file { "$secrets_dir":
       ensure  => directory,
@@ -39,7 +37,7 @@ class totpcgi::config inherits totpcgi {
   if $pincode_engine == "file" {
     file { "$pincode_file":
       ensure  => file,
-      owner   => $totpcgi_owner,
+      owner   => 'root',
       group   => $totpcgi_group,
       mode    => '0640',
     }
@@ -50,6 +48,16 @@ class totpcgi::config inherits totpcgi {
       ensure  => file,
     }
   }
+
+  if $state_engine == "file" {
+    file { "$state_dir":
+      ensure  => directory,
+      owner   => $provisioning_owner,
+      group   => $totpcgi_group,
+      mode    => '0770',
+    }
+  }
+
 
 }
 
