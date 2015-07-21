@@ -31,11 +31,11 @@ class totpcgi::params {
   $trust_http_auth    = 'False'
 
   $totpcgi_config             = '/etc/totpcgi/totpcgi.conf'
-  $totpcgi_owner              = 'root'
+  $totpcgi_owner              = 'totpcgi'
   $totpcgi_group              = 'totpcgi'
 
   $provisioning_config        = '/etc/totpcgi/provisioning.conf'
-  $provisioning_owner         = 'root'
+  $provisioning_owner         = 'totpcgiprov'
   $provisioning_group         = 'totpcgiprov'
 
   # different backends and respective settings
