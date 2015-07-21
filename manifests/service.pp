@@ -37,15 +37,25 @@ class totpcgi::service (
     error_log_file    => $error_log_file,
     access_log_file   => $access_log_file,
     directories       => $directories,
-
-#    # Use this for totp.cgi
-#    AddHandler cgi-script .cgi
-#    DirectoryIndex index.cgi
-#
-#    # Or use this for totp.fcgi:
-#    #AddHandler fcgid-script .fcgi
-#    #DirectoryIndex index.fcgi
-
+    requires          => [
+      File["$docroot"],
+      File["${docroot}/index.cgi"],
+    ],
   }
+
+  file { "$docroot":
+    ensure  => directory,
+    owner   => $totpcgi_owner,
+    group   => $totpcgi_group,
+    mode    => '0751',
+  }
+
+  file { "${docroot}/index.cgi":
+    ensure  => file,
+    owner   => $totpcgi_owner,
+    group   => $totpcgi_group,
+    mode    => '0550',
+  }
+
 
 }
