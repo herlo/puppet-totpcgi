@@ -172,6 +172,6 @@ class totpcgi (
   Anchor['totpcgi::begin'] ->
     Class['totpcgi::install'] ->
     Class['totpcgi::config'] ->
-#    Class['totpcgi::service'] ->
+    Class['totpcgi::service'] ->
   Anchor['totpcgi::end']
 }

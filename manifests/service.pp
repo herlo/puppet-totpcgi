@@ -37,7 +37,7 @@ class totpcgi::service (
     error_log_file    => $error_log_file,
     access_log_file   => $access_log_file,
     directories       => $directories,
-    requires          => [
+    require           => [
       File["$docroot"],
       File["${docroot}/index.cgi"],
     ],
