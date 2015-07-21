@@ -159,7 +159,6 @@ class totpcgi (
   $error_log_file                   = $totpcgi::params::error_log_file,
   $access_log_file                  = $totpcgi::params::access_log_file,
   $directories                      = $totpcgi::params::directories,
-  $addhandlers                      = $totpcgi::params::addhandlers
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
 

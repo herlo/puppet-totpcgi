@@ -95,7 +95,6 @@ class totpcgi::params {
   $error_log_file           = undef
   $access_log_file          = undef
   $directories              = undef
-  $addhandlers              = undef
 
 }
 
