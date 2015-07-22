@@ -17,11 +17,16 @@
 class totpcgi::params {
   $install_totpcgi    = true
   $install_qrcode     = true
+  $provisioning       = undef # use 'manual' as 'automatic' is not yet supported
   $require_pincode    = 'False'
   $success_string     = 'OK'
   $encrypt_secret     = 'False'
+  $encoded_secret     = undef
   $window_size        = '3'
   $rate_limit         = '3, 30'
+  $disallow_reuse     = true
+  $totp_auth          = true
+  $hotp_counter       = undef
   $scratch_tokens_n   = '5'
   $bits               = '80'
   $totp_user_mask     = '$username@example.com'

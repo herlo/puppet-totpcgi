@@ -93,6 +93,7 @@
 class totpcgi (
   $install_totpcgi                  = $totpcgi::params::install_totpcgi,
   $install_qrcode                   = $totpcgi::params::install_pincode,
+  $provisioning                     = $totpcgi::params::provisioning,
   $totpcgi_config                   = $totpcgi::params::totpcgi_config,
   $totpcgi_owner                    = $totpcgi::params::totpcgi_owner,
   $totpcgi_group                    = $totpcgi::params::totpcgi_group,
@@ -102,8 +103,12 @@ class totpcgi (
   $require_pincode                  = $totpcgi::params::require_pincode,
   $success_string                   = $totpcgi::params::success_string,
   $encrypt_secret                   = $totpcgi::params::encrypt_secret,
+  $encoded_secret                   = $totpcgi::params::encoded_secret,
   $window_size                      = $totpcgi::params::window_size,
   $rate_limit                       = $totpcgi::params::rate_limit,
+  $disallow_reuse                   = $totpcgi::params::disallow_reuse,
+  $totp_auth                        = $totpcgi::params::totp_auth,
+  $hotp_counter                     = $totpcgi::params::hotp_counter,
   $scratch_tokens_n                 = $totpcgi::params::scratch_tokens_n,
   $bits                             = $totpcgi::params::bits,
   $totp_user_mask                   = $totpcgi::params::totp_user_mask,
@@ -168,6 +173,9 @@ class totpcgi (
   include totpcgi::install
   include totpcgi::config
   include totpcgi::service
+  if $provisioning {
+    include totpcgi::provision
+  }
 
   Anchor['totpcgi::begin'] ->
     Class['totpcgi::install'] ->
