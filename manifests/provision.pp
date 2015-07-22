@@ -1,6 +1,7 @@
 
 define totpcgi::provision::manual (
-  $values,
+  $encoded_secret,
+  $tokens,
 ) {
 
   file { "${totpcgi::secrets_dir}/${name}.totp":
