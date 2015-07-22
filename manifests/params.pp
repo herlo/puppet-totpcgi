@@ -21,7 +21,7 @@ class totpcgi::params {
   $require_pincode    = 'False'
   $success_string     = 'OK'
   $encrypt_secret     = 'False'
-  $encoded_secret     = undef
+  $users              = undef
   $window_size        = '3'
   $rate_limit         = '3, 30'
   $disallow_reuse     = true
