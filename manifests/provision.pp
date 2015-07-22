@@ -3,10 +3,10 @@ define totpcgi::provision::manual (
   $values,
 ) {
 
-  file { "${secrets_dir}/${name}.totp":
-    ensure  => directory,
-    owner   => $totpcgiprov_owner,
-    group   => $totcpgi_group,
+  file { "${totpcgi::secrets_dir}/${name}.totp":
+    ensure  => file,
+    owner   => ${totpcgi::totpcgiprov_owner},
+    group   => ${totpcgi::totcpgi_group},
     mode    => '0440',
     content => template('totpcgi/secrets.totp.erb')
   }
