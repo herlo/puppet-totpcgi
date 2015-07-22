@@ -1,15 +1,13 @@
 
-class totpcgi::provision (
-) inherits totpcgi {
+define totpcgi::provision::manual (
+  $values,
+) {
 
-  if $provisioning == 'manual':
-    file { "${secrets_dir}/${user}.totp":
-      ensure  => directory,
-      owner   => $totpcgiprov_owner,
-      group   => $totpcgi_group,
-      mode    => '0440',
-      content => template('totpcgi/secrets.totp.erb')
+  file { "${secrets_dir}/${name}.totp":
+    ensure  => directory,
+    owner   => $totpcgiprov_owner,
+    group   => $totcpgi_group,
+    mode    => '0440',
+    content => template('totpcgi/secrets.totp.erb')
   }
-  # do automated provisioning, currently unsupported
-
 }

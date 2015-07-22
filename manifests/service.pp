@@ -57,5 +57,8 @@ class totpcgi::service (
     mode    => '0550',
   }
 
+  if $provisioning == 'manual' {
+    create_resources('totpcgi::provision::manual', $totpcgi::users)
+  }
 
 }
