@@ -6,8 +6,8 @@ define totpcgi::provision::manual (
 
   file { "${totpcgi::secrets_dir}/${name}.totp":
     ensure  => file,
-    owner   => ${totpcgi::totpcgiprov_owner},
-    group   => ${totpcgi::totcpgi_group},
+    owner   => $totpcgi::totpcgiprov_owner,
+    group   => $totpcgi::totcpgi_group,
     mode    => '0440',
     content => template('totpcgi/secrets.totp.erb')
   }
