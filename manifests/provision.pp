@@ -1,7 +1,7 @@
 
 define totpcgi::provision::manual (
   $encoded_secret,
-  $tokens,
+  $tokens = undef,
 ) {
 
   file { "${totpcgi::secrets_dir}/${name}.totp":
