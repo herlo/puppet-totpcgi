@@ -23,7 +23,7 @@ class totpcgi::params {
   $encrypt_secret     = 'False'
   $users              = undef
   $window_size        = '3'
-  $rate_limit         = '3, 30'
+  $rate_limit         = '3 30'
   $disallow_reuse     = true
   $totp_auth          = true
   $hotp_counter       = undef
