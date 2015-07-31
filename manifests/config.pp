@@ -63,11 +63,6 @@ class totpcgi::config inherits totpcgi {
         notify => Selmodule['mytotpcgi'],
         source => 'puppet:///modules/totpcgi/mytotpcgi.te'
       }
-
-      selmodule { 'mytotpcgi':
-        ensure      => present,
-        syncversion => true,
-      }
   }
 
 }
