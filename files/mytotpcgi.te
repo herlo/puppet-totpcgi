@@ -1,0 +1,18 @@
+##################################
+# This file is managed by puppet #
+#     DO NOT EDIT DIRECTLY       #
+##################################
+
+module mytotpcgi 1.1;
+
+require {
+    type totpcgi_script_t;
+    type sssd_var_lib_t;
+    type passwd_file_t;
+    class file { read getattr open };
+    class dir search;
+}
+
+#============= totpcgi_script_t ==============
+allow totpcgi_script_t passwd_file_t:file { read getattr open };
+allow totpcgi_script_t sssd_var_lib_t:dir search;
