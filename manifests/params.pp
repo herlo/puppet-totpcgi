@@ -101,5 +101,18 @@ class totpcgi::params {
   $error_log_file           = undef
   $access_log_file          = undef
   $directories              = undef
+
+  # the totpcgi module is broken by python core libraries,
+  # which try to lookup the uid and cause an selinux AVC
+  # turning on this variable will enable the temporary
+  # policy to fix the problem
+
+  $broken_selinux_python_policy = False
+
+  # client only configs
+  $totpcgi_host             = undef
+  $totpcgi_host_ip          = undef
+
+
 }
 

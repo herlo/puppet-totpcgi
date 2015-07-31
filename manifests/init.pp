@@ -164,6 +164,7 @@ class totpcgi (
   $error_log_file                   = $totpcgi::params::error_log_file,
   $access_log_file                  = $totpcgi::params::access_log_file,
   $directories                      = $totpcgi::params::directories,
+  $broken_selinux_python_policy     = $totpcgi::broken_selinux_python_policy,
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
 
