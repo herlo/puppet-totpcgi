@@ -59,8 +59,8 @@ class totpcgi::config inherits totpcgi {
   }
 
   if $broken_selinux_python_policy{
+      include selinux::base
       selinux::module { 'mytotpcgi':
-        notify => Selmodule['mytotpcgi'],
         source => 'puppet:///modules/totpcgi/mytotpcgi.te'
       }
   }
