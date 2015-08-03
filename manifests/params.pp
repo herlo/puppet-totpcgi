@@ -113,7 +113,7 @@ class totpcgi::params {
   # client only configs
   $totpcgi_host             = undef
   $totpcgi_host_ip          = undef
-
+  $pam_url_prompt           = "Password+Token: "
 
 }
 
