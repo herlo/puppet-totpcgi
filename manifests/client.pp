@@ -16,7 +16,8 @@
 #
 
 class totpcgi::client (
-  $host                = $totpcgi::params::host
+  $totpcgi_host             = $totpcgi::params::host
+  $totpcgi_host_ip          = $totpcgi::params::host
 ) inherits totpcgi::params {
 
   include totpcgi::repo
