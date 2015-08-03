@@ -2,9 +2,6 @@
 #
 # Installs totpcgi into the indicated virtualenv
 #
-# == Parameters
-#
-#
 # === Authors
 #
 # Clint Savage <herlo@linuxfoundation.org>
