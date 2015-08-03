@@ -16,8 +16,8 @@
 #
 
 class totpcgi::client (
-  $totpcgi_host             = $totpcgi::params::host,
-  $totpcgi_host_ip          = $totpcgi::params::host_ip,
+  $host             = $totpcgi::params::host,
+  $host_ip          = $totpcgi::params::host_ip,
 ) inherits totpcgi::params {
 
   include totpcgi::repo
@@ -26,8 +26,8 @@ class totpcgi::client (
     require => Class['::totpcgi::repo'],
   }
 
-  host { "$totpcgi_host":
-    ip => $totpcgi_host_ip,
+  host { "$host":
+    ip => $host_ip,
   }
 
 }
