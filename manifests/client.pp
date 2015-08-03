@@ -18,6 +18,7 @@
 class totpcgi::client (
   $host             = $totpcgi::params::host,
   $host_ip          = $totpcgi::params::host_ip,
+  $pam_url_config   = $totpcgi::params::pam_url_config,
   $port             = $totpcgi::params::port,
   $return_code      = $totpcgi::params::success_string,
   $pam_url_prompt   = $totpcgi::params::pam_url_prompt,
