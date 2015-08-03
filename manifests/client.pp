@@ -21,8 +21,8 @@ class totpcgi::client (
 
   include totpcgi::repo
 
-  package [ 'pam_url':
-    require => Class['::totpcgi::repo']
+  package { 'pam_url':
+    require => Class['::totpcgi::repo'],
   }
 
   host { "$totpcgi_host":
