@@ -55,9 +55,6 @@ class totpcgi::params {
   $secret_mysql_connect_user = ''
   $secret_mysql_connect_password = ''
   $secret_mysql_connect_db   = ''
-  $secret_ldap_url           = 'ldaps://ipa.example.com:636/'
-  $secret_ldap_dn            = 'uid=$username,cn=users,cn=accounts,dc=example,dc=com'
-  $secret_ldap_cacert        = '/etc/pki/tls/certs/ipa-ca.crt'
 
   # pincode backend
   $pincode_engine             = 'file'
@@ -65,35 +62,32 @@ class totpcgi::params {
   $pincode_makedb             = 'True'
   $pincode_file               = "$totpcgi_config_dir/pincodes"
   $pincode_pg_connect_string  = 'user= password= host= dbname='
-  $pincode_mysql_connect_host = ''
-  $pincode_mysql_connect_user = ''
-  $pincode_mysql_connect_password = ''
-  $pincode_mysql_connect_db   = ''
+  $pincode_mysql_connect_host = undef
+  $pincode_mysql_connect_user = undef
+  $pincode_mysql_connect_password = undef
+  $pincode_mysql_connect_db   = undef
   $pincode_ldap_url           = 'ldaps://ipa.example.com:636/'
   $pincode_ldap_dn            = 'uid=$username,cn=users,cn=accounts,dc=example,dc=com'
-  $pincode_ldap_cacert        = '/etc/pki/tls/certs/ipa-ca.crt'
+  $pincode_ldap_cacert        = '/etc/ipa/ca.crt'
 
   # state backend
   $state_engine             = 'file'
   $state_dir                = '/var/lib/totpcgi'
   $state_pg_connect_string  = 'user= password= host= dbname='
-  $state_mysql_connect_host = ''
-  $state_mysql_connect_user = ''
-  $state_mysql_connect_password = ''
-  $state_mysql_connect_db   = ''
-  $state_ldap_url           = 'ldaps://ipa.example.com:636/'
-  $state_ldap_dn            = 'uid=$username,cn=users,cn=accounts,dc=example,dc=com'
-  $state_ldap_cacert        = '/etc/pki/tls/certs/ipa-ca.crt'
+  $state_mysql_connect_host = undef
+  $state_mysql_connect_user = undef
+  $state_mysql_connect_password = undef
+  $state_mysql_connect_db   = undef
 
   # apache configs
   $vhost_name               = undef
   $port                     = '8443'
   $servername               = undef
-  $serveradmin              = undef
+  $serveradmin              = 'admin@example.com'
   $docroot                  = undef
   $suexec_user_group        = undef
   $ssl                      = true
-  $ssl_certs_dir            = ''
+  $ssl_certs_dir            = undef
   $ssl_cacert               = undef
   $ssl_cert                 = undef
   $ssl_key                  = undef
