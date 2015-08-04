@@ -7,21 +7,21 @@ pam_url:
 {
     settings:
     {
-        url = "https://<%= host -%>:<%= port -%>/";  # URI to fetch
-        returncode = "<%= return_code -%>";              # The remote script/cgi should return a 200 http code and this string as its only results
+        url = "https://<%= @host -%>:<%= @port -%>/";  # URI to fetch
+        returncode = "<%= @return_code -%>";              # The remote script/cgi should return a 200 http code and this string as its only results
         userfield = "user";             # userfield name to send
         passwdfield = "token";              # passwdfield name to send
         extradata = "&do=login";            # extradata to send
-        prompt = "<%= pam_url_prompt -%>";  # password prompt
+        prompt = "<%= @pam_url_prompt -%>";  # password prompt
     };
 
     ssl:
     {
         verify_peer = true;             # Should we verify SSL ?
         verify_host = true;             # Should we verify the CN in the SSL cert?
-        client_cert = "<%= ssl_cert -%>"; # file to use as client-side certificate
-        client_key  = "<%= ssl_key -%>"; # file to use as client-side key (can be same file as above if a single cert)
-        ca_cert     = "<%= ssl_cacert -%>";
+        client_cert = "<%= @ssl_cert -%>"; # file to use as client-side certificate
+        client_key  = "<%= @ssl_key -%>"; # file to use as client-side key (can be same file as above if a single cert)
+        ca_cert     = "<%= @ssl_cacert -%>";
     };
 };
 
