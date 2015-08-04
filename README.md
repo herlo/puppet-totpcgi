@@ -2,80 +2,510 @@
 
 [![Build Status](https://travis-ci.org/herlo/puppet-totpcgi.png)](https://travis-ci.org/herlo/puppet-totpcgi)
 
-#### Table of Contents
+This module manages the configuration of https://github.com/mricon/totp-cgi.
+It includes a server component and client components. The only current module
+is for sudo.
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with totpcgi](#setup)
-    * [What totpcgi affects](#what-totpcgi-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with totpcgi](#beginning-with-totpcgi)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+===
 
-## Overview
+# Compatibility
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module has been tested to work on the following systems using Puppet v4 with Ruby version 2.0.0.
 
-## Module Description
+ * EL 7
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+===
+# Dependencies
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+* mthibaut/users >=v1.0.11
+* https://github.com/herlo/puppet-module-pam
+  (a fork with a few improvements from ghoneycut/pam)
+  See https://github.com/ghoneycutt/puppet-module-pam/pull/115
+  for current status of PR.
+* https://github.com/herlo/puppet-module-nsswitch.git
+  (a fork with a few improvements from ghoneycut/nsswitch)
+  *required by puppet-module-pam
+* puppetlabs/apache', >=1.5.0
 
-## Setup
+===
 
-### What totpcgi affects
+# Parameters
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+## totpcgi server configurations
 
-### Setup Requirements **OPTIONAL**
+All configurations are represnted as 'totpcgi::<parameter>'
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+install_totpcgi
+-------------
+Boolean determining wether this module will manage the installation of the
+totpcgi, totpcgi-selinux, and totpcgi-provisioning packages.
 
-### Beginning with totpcgi
+- *Default*: true
 
-The very basic steps needed for a user to get the module up and running.
+install_qrcode
+----------------
+Whether this module will manage the installation of the
+python-qrcode package. This package is used to display
+qrcodes for adding pincodes.
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+- *Default*: true
 
-## Usage
+provisioning
+---------------
+provisions new pincode accounts  The options are 'manual' and 'automatic'
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+'automatic' is not yet supported.
 
-## Reference
+- *Default*: 'manual'
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+require_pincode
+---------------
+String (which the config reads as a boolean) whether to also require
+a pincode (or password).
 
-## Limitations
+- *Default*: 'False'
 
-This is where you list OS compatibility, version compatibility, etc.
+success_string
+---------------
+String returned from the totpcgi service indicating successful validation
+of token.
 
-## Development
+- *Default*: 'OK'
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+encrypt_secret
+---------------
+Whether to encrypt the master secret for totp codes.
 
-## Release Notes/Contributors/Etc **Optional**
+**NOTE**: It's important to realize that this comes with a trade-off --
+if a client forgets their pincode, the TOTP token will need to be re-provisioned.
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+- *Default*: 'False'
+
+users
+-----
+The totpcgi and totpcgiprov users must be created. This uses the
+mthibaut/users puppet module.
+
+See https://github.com/lfit/totp-cgi/blob/master/INSTALL.rst#provisioning-cgi
+
+- *Default*: undef
+
+# Hiera example for totpcgi::users
+<pre>
+totpcgi::users:
+  bob:
+    encoded_secret: '2AA348X9K27GH0B4'
+    tokens:
+      - '01234567'
+      - '12345678'
+      - '23456789'
+      - '34567890'
+      - '45678901'
+</pre>
+
+window_size
+------------
+String, see https://github.com/google/google-authenticator/blob/master/libpam/FILEFORMAT
+
+- *Default*: '3'
+
+rate_limit
+----------
+String, see https://github.com/google/google-authenticator/blob/master/libpam/FILEFORMAT
+
+- *Default*: '3 30'
+
+disallow_reuse
+---------------
+Boolean, see https://github.com/google/google-authenticator/blob/master/libpam/FILEFORMAT
+
+- *Default*: true
+
+totp_auth
+---------
+Boolean, see https://github.com/google/google-authenticator/blob/master/libpam/FILEFORMAT
+
+- *Default*: true
+
+hotp_counter
+------------
+String, see https://github.com/google/google-authenticator/blob/master/libpam/FILEFORMAT
+
+- *Default*: undef
+
+scratch_tokens_n
+----------------
+The default number of scratch tokens included in the user.totp file.
+
+- *Default*: '5'
+
+bits
+----
+How many bits in a generated secret.
+
+- *Default*: '80'
+
+totp_user_mask
+---------------
+Identifies the token in the Google Authenticator application. The '$username'
+is interpolated at provisioning. Useful when users have more than one token.
+
+- *Default*: '$username@example.com'
+
+totpcgi_config_dir
+------------------
+Where totpcgi configuration files live.
+
+- *Default*: '/etc/totpcgi'
+
+totpcgi_config
+----------------
+The path to the totpcgi.conf
+
+- *Default*: '/etc/totpcgi/totpcgi.conf
+
+totpcgi_owner / totpcgi_group
+-----------------------------
+The owner and group for the $totpcgi_config mentioned above.
+
+- *Default*: 'totpcgi'
+
+provisioning_config
+-------------------
+The path to the provisioning.conf
+
+- *Default*: '/etc/totpcgi/provisioning.conf
+
+provisioning_owner / provisioning_group
+-----------------------------------------
+The owner and group for the $provisioning_config mentioned above.
+
+- *Default*: 'totpcgiprov'
+
+## The following are set in both totpcgi_config and provisioning_config
+
+secret_engine
+---------------
+Engine where totp secrets are stored. The options are:
+* 'file'
+* 'pgsql'
+* 'mysql'
+
+- *Default*: 'file'
+
+secrets_dir
+---------------
+When using 'file' for the $secret_engine, this will be the path holding
+the <username>.totp files with secrets.
+
+- *Default*: '$totpcgi_config_dir/totp'
+
+secret_pg_connect_string
+------------------------
+When using 'pgsql' for the $secret_engine, this will be the connection
+string to the postgresql database.
+
+- *Default*: 'user= password= host= dbname='
+
+secret_mysql_connect_host
+-------------------------
+When using 'mysql' for the $secret_engine, this will be the mysql host.
+
+- *Default*: undef
+
+secret_mysql_connect_user
+-------------------------
+When using 'mysql' for the $secret_engine, this will be the user.
+
+- *Default*: undef
+
+secret_mysql_connect_pass
+---------------------------
+When using 'mysql' for the $secret_engine, this will be the password.
+
+- *Default*: undef
+
+secret_mysql_connect_db
+-----------------------
+When using 'mysql' for the $secret_engine, this will be the database.
+
+- *Default*: undef
+
+pincode_engine
+---------------
+Engine where totp secrets are stored. The options are:
+* 'file'
+* 'pgsql'
+* 'mysql'
+* 'ldap'
+
+- *Default*: 'file'
+
+pincode_usehash
+---------------
+Default hash verification method.
+
+- *Default*: 'sha256'
+
+pincode_makedb
+---------------
+Whether to compile the DBM database (only meaningful with the file backend)
+
+- *Default*: 'True'
+
+pincode_file
+---------------
+When using 'file' for the $pincode_engine, this will be the file holding
+username:password-hash values.
+
+- *Default*: '$totpcgi_config_dir/pincodes'
+
+pincode_pg_connect_string
+------------------------
+When using 'pgsql' for the $pincode_engine, this will be the connection
+string to the postgresql database.
+
+- *Default*: 'user= password= host= dbname='
+
+pincode_mysql_connect_host
+-------------------------
+When using 'mysql' for the $pincode_engine, this will be the mysql host.
+
+- *Default*: undef
+
+pincode_mysql_connect_user
+-------------------------
+When using 'mysql' for the $pincode_engine, this will be the user.
+
+- *Default*: undef
+
+pincode_mysql_connect_pass
+---------------------------
+When using 'mysql' for the $pincode_engine, this will be the password.
+
+- *Default*: undef
+
+pincode_mysql_connect_db
+-----------------------
+When using 'mysql' for the $pincode_engine, this will be the database.
+
+- *Default*: undef
+
+pincode_ldap_url
+----------------
+When using 'ldap' for the $pincode_engine, this will be the ldap_url.
+
+- *Default*: 'ldaps://ipa.example.com:636/'
+
+pincode_ldap_dn
+---------------
+When using 'ldap' for the $pincode_engine, this will be the user.
+
+- *Default*: 'uid=$username,cn=users,cn=accounts,dc=example,dc=com'
+
+pincode_ldap_cacert
+-------------------
+When using 'ldap' for the $pincode_engine, the CA Certificate path.
+
+- *Default*: '/etc/ipa/ca.crt'
+
+state_engine
+---------------
+Engine where totp secrets are stored. The options are:
+* 'file'
+* 'pgsql'
+* 'mysql'
+
+- *Default*: 'file'
+
+state_file
+---------------
+When using 'file' for the $state_engine, this will be the state directory.
+
+
+- *Default*: '/var/lib/totpcgi'
+
+state_pg_connect_string
+------------------------
+When using 'pgsql' for the $state_engine, this will be the connection
+string to the postgresql database.
+
+- *Default*: 'user= password= host= dbname='
+
+state_mysql_connect_host
+-------------------------
+When using 'mysql' for the $state_engine, this will be the mysql host.
+
+- *Default*: undef
+
+state_mysql_connect_user
+-------------------------
+When using 'mysql' for the $state_engine, this will be the user.
+
+- *Default*: undef
+
+state_mysql_connect_pass
+---------------------------
+When using 'mysql' for the $state_engine, this will be the password.
+
+- *Default*: undef
+
+state_mysql_connect_db
+-----------------------
+When using 'mysql' for the $state_engine, this will be the database.
+
+- *Default*: undef
+
+## provisioning.cgi only configs
+
+action_url
+----------
+Where the provisioning CGI is located, with regards to the web root.
+
+- *Default*: '/index.cgi'
+
+css_root
+--------
+CSS files provided to make the provisioning page look good.
+
+- *Default*: '/'
+
+templates_dir
+---------------
+Where to find the templates files.
+
+- *Default*: '/etc/totpcgi/templates'
+
+trust_http_auth
+---------------
+Whether to rely on HTTP auth to handle authentication. Turning this on
+requires setting 'encrypt_secret' to false.
+
+- *Default*: 'False'
+
+## apache vhost configuration
+Since totpcgi is a CGI application, it uses a virtualhost, provided by the
+puppetlabs/apache module. (See dependencies above)
+
+vhost_name
+----------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+port
+----
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: '8443'
+
+servername
+----------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+serveradmin
+-----------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: 'admin@example.com'
+
+docroot
+-------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+suexec_user_group
+-----------------
+See https://github.com/puppetlabs/puppetlabs-apache
+
+- *Default*: undef
+
+ssl
+---
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: true
+
+ssl_certs_dir
+---------------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: 'OK'
+
+ssl_cacert
+---------------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: 'OK'
+
+ssl_cert
+--------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: 'OK'
+
+ssl_key
+-------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+ssl_verify_depth
+----------------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+ssl_verify_client
+-----------------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+error_log_file
+---------------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+access_log_file
+---------------
+See https://github.com/puppetlabs/puppetlabs-apache#define-apachevhost
+
+- *Default*: undef
+
+directories
+---------------
+https://github.com/puppetlabs/puppetlabs-apache#parameter-directories-for-apachevhost
+
+- *Default*: undef
+
+## Client only configs (specifically sudo)
+All configurations are represented as 'totpcgi::client::<parameter>'
+
+host
+----
+totpcgi server host fqdn
+
+- *Default*: undef
+
+host_ip
+-------
+totpcgi server host ip address
+
+- *Default*: undef
+
+pam_url_config
+--------------
+path to the pam_url.conf
+
+- *Default*: '/etc/pam_url.conf'
+
+pam_url_prompt
+--------------
+The text prompt given to users when performing sudo actions
+
+- *Default*: 'Token: '
