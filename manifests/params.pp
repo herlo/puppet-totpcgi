@@ -114,7 +114,7 @@ class totpcgi::params {
   $host             = undef
   $host_ip          = undef
   $pam_url_config   = '/etc/pam_url.conf'
-  $pam_url_prompt   = "Password+Token: "
+  $pam_url_prompt   = "Token: "
 
 }
 
