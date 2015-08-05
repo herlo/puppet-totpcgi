@@ -88,10 +88,10 @@ if a client forgets their pincode, the TOTP token will need to be re-provisioned
 
 - *Default*: 'False'
 
-users
+tokens
 -----
-The totpcgi and totpcgiprov users must be created. This uses the
-mthibaut/users puppet module.
+If the $provisioning value is set to 'manual', this construct creates the
+token files.
 
 See https://github.com/lfit/totp-cgi/blob/master/INSTALL.rst#provisioning-cgi
 
@@ -99,7 +99,7 @@ See https://github.com/lfit/totp-cgi/blob/master/INSTALL.rst#provisioning-cgi
 
 # Hiera example for totpcgi::users
 <pre>
-totpcgi::users:
+totpcgi::tokens:
   bob:
     encoded_secret: '2AA348X9K27GH0B4'
     tokens:
