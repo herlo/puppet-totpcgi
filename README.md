@@ -17,7 +17,15 @@ This module has been tested to work on the following systems using Puppet v4 wit
 ===
 # Dependencies
 
+## Forge Modules
+
 * mthibaut/users >=v1.0.11
+* puppetlabs/apache', >=1.5.0
+* camptocamp/selinux, >=0.1.19 (should go away with a proper
+  fix to the el7 selinux policy)
+
+## Github Repos (for one reason or another)
+
 * https://github.com/herlo/puppet-module-pam
   (a fork with a few improvements from ghoneycut/pam)
   See https://github.com/ghoneycutt/puppet-module-pam/pull/115
@@ -25,9 +33,6 @@ This module has been tested to work on the following systems using Puppet v4 wit
 * https://github.com/herlo/puppet-module-nsswitch.git
   (a fork with a few improvements from ghoneycut/nsswitch)
   *required by puppet-module-pam
-* puppetlabs/apache', >=1.5.0
-* camptocamp/selinux, >=0.1.19 (should go away with a proper
-  fix to the el7 selinux policy)
 
 ===
 
