@@ -1,13 +1,18 @@
 fixtures:
   # use the forge modules so we can easily pin to a specific version
-#  forge_modules:
-#    stdlib: "puppetlabs/stdlib"
+  forge_modules:
+    apache:
+      repo: "puppetlabs/apache"
+      ref: "1.5.0"
+    users:
+      repo: "mthibaut/users"
+      ref: "1.0.11"
+    selinux:
+      repo: "camptocamp/selinux"
+      ref: "0.1.19"
   repositories:
     stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
     pam: "git://github.com/herlo/puppet-module-pam.git"
-    users: "git://github.com/mthibaut/puppet-users.git"
     nsswitch: "git://github.com/herlo/puppet-module-nsswitch.git"
-    apache: "git://github.com/puppetlabs/puppetlabs-apache.git"
-    selinux: "git://github.com/camptocamp/puppet-selinux.git"
   symlinks:
     totpcgi: "#{source_dir}"
