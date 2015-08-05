@@ -21,7 +21,7 @@ describe 'totpcgi::install', :type => :class do
       expect {
         should compile
       }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
-        /Must pass group/)
+        /Must pass /)
     end
   end
 

@@ -90,7 +90,11 @@ class totpcgi (
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
-  include totpcgi::install
+  class { 'totpcgi::install':
+    install_totpcgi => $install_totpcgi,
+    install_qrcode  => $install_qrcode,
+  }
+
   include totpcgi::config
   include totpcgi::service
 
