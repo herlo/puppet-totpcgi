@@ -34,7 +34,7 @@ describe 'totpcgi::install', :type => :class do
     it { should contain_class('totpcgi::install') }
     it { should contain_package('totpcgi') }
     it { should contain_package('totpcgi-selinux') }
-    it { should contain_package('totpcgi-provisioning'') }
+    it { should contain_package('totpcgi-provisioning') }
    end
 end
 
