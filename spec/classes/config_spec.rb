@@ -17,28 +17,21 @@ describe 'totpcgi::config', :type => :class do
   context 'with defaults for all parameters' do
     let(:params) {{}}
 
-    it do
-      expect {
-        should compile
-      }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
-        /Must pass configuration/)
-    end
-
-    it { should contain_file("$totpcgi_config_dir").with(
+    it { should contain_file('/etc/totpcgi').with(
       'ensure'  => 'directory',
       'owner'   => 'totpcgiprov',
       'group'   => 'totpcgi',
       'mode'    => '0750',
     )}
 
-    it { should contain_file( "$totpcgi_config").with(
+    it { should contain_file('/etc/totpcgi/totpcgi.conf').with(
       'ensure'  => 'file',
       'owner'   => 'totpcgiprov',
       'group'   => 'totpcgi',
       'mode'    => '0640',
     )}
 
-    it { should contain_file("$provisioning_config").with(
+    it { should contain_file('/etc/totpcgi/provisioning.conf').with(
       'ensure'  => 'file',
       'owner'   => 'totpcgiprov',
       'group'   => 'totpcgiprov',
