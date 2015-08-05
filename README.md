@@ -162,7 +162,7 @@ totpcgi_config
 ----------------
 The path to the totpcgi.conf
 
-- *Default*: '/etc/totpcgi/totpcgi.conf
+- *Default*: '$totpcgi_config_dir/totpcgi.conf
 
 totpcgi_owner / totpcgi_group
 -----------------------------
@@ -174,7 +174,7 @@ provisioning_config
 -------------------
 The path to the provisioning.conf
 
-- *Default*: '/etc/totpcgi/provisioning.conf
+- *Default*: '$totpcgi_config_dir/provisioning.conf
 
 provisioning_owner / provisioning_group
 -----------------------------------------
@@ -374,7 +374,7 @@ templates_dir
 ---------------
 Where to find the templates files.
 
-- *Default*: '/etc/totpcgi/templates'
+- *Default*: '$totpcgi_config_dir/templates'
 
 trust_http_auth
 ---------------

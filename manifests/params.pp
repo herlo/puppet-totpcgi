@@ -18,6 +18,7 @@
 class totpcgi::params {
   $install_totpcgi    = true
   $install_qrcode     = true
+  $totpcgi_config_dir = '/etc/totpcgi'
   $provisioning       = undef # use 'manual' as 'automatic' is not yet supported
   $require_pincode    = 'False'
   $success_string     = 'OK'
@@ -33,9 +34,8 @@ class totpcgi::params {
   $totp_user_mask     = '$username@example.com'
   $action_url         = '/index.cgi'
   $css_root           = '/'
-  $templates_dir      = '/etc/totpcgi/templates'
+  $templates_dir      = "$totpcgi_config_dir/templates"
   $trust_http_auth    = 'False'
-  $totpcgi_config_dir = '/etc/totpcgi'
 
   $totpcgi_config             = "$totpcgi_config_dir/totpcgi.conf"
   $totpcgi_owner              = 'totpcgi'
