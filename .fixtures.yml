@@ -8,5 +8,6 @@ fixtures:
     users: "git://github.com/mthibaut/puppet-users.git"
     nsswitch: "git://github.com/herlo/puppet-module-nsswitch.git"
     apache: "git://github.com/puppetlabs/puppetlabs-apache.git"
+    selinux: "git://github.com/camptocamp/puppet-selinux.git"
   symlinks:
     totpcgi: "#{source_dir}"
