@@ -26,6 +26,8 @@ This module has been tested to work on the following systems using Puppet v4 wit
   (a fork with a few improvements from ghoneycut/nsswitch)
   *required by puppet-module-pam
 * puppetlabs/apache', >=1.5.0
+* camptocamp/selinux, >=0.1.19 (should go away with a proper
+  fix to the el7 selinux policy)
 
 ===
 
