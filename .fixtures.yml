@@ -4,9 +4,9 @@ fixtures:
 #    stdlib: "puppetlabs/stdlib"
   repositories:
     stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
-    pam: git://github.com/herlo/puppet-module-pam.git"
-    users: git://github.com/mthibaut/puppet-users.git
-    nsswitch: git://github.com/herlo/puppet-module-nsswitch.git
-    apache: git://github.com/puppetlabs/puppetlabs-apache.git
+    pam: "git://github.com/herlo/puppet-module-pam.git"
+    users: "git://github.com/mthibaut/puppet-users.git"
+    nsswitch: "git://github.com/herlo/puppet-module-nsswitch.git"
+    apache: "git://github.com/puppetlabs/puppetlabs-apache.git"
   symlinks:
     totpcgi: "#{source_dir}"
