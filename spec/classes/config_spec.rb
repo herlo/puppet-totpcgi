@@ -39,8 +39,8 @@ describe 'totpcgi::config', :type => :class do
     )}
 
     it { should contain_file("$provisioning_config").with(
-      'ensure  => 'file',
-      'owner   => 'totpcgiprov',
+      'ensure'  => 'file',
+      'owner'   => 'totpcgiprov',
       'group'   => 'totpcgiprov',
       'mode'    => '0640',
     )}
