@@ -25,24 +25,24 @@ describe 'totpcgi::config', :type => :class do
     end
 
     it { should contain_file("$totpcgi_config_dir").with(
-      ensure  => directory,
-      owner   => 'totpcgiprov',
-      group   => 'totpcgi',
-      mode    => '0750',
+      'ensure'  => 'directory',
+      'owner'   => 'totpcgiprov',
+      'group'   => 'totpcgi',
+      'mode'    => '0750',
     )}
 
     it { should contain_file( "$totpcgi_config").with(
-      ensure  => file,
-      owner   => 'totpcgiprov',
-      group   => 'totpcgi',
-      mode    => '0640',
+      'ensure'  => 'file',
+      'owner'   => 'totpcgiprov',
+      'group'   => 'totpcgi',
+      'mode'    => '0640',
     )}
 
     it { should contain_file("$provisioning_config").with(
-      ensure  => file,
-      owner   => 'totpcgiprov',
-      group   => 'totpcgiprov',
-      mode    => '0640',
+      'ensure'  => 'file',
+      'owner'   => 'totpcgiprov',
+      'group'   => 'totpcgiprov',
+      'mode'    => '0640',
     }
 
   end
