@@ -20,6 +20,6 @@ describe 'totpcgi', :type => :class do
     it { should contain_class('totpcgi::service') }
     it { should contain_anchor('totpcgi::end') }
   end
-
+end
 
 # vim: sw=2 ts=2 sts=2 et :
