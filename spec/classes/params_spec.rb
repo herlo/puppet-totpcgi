@@ -1,7 +1,13 @@
 require 'spec_helper'
 
 describe 'totpcgi::params', :type => :class do
-  context 'with defaults' do
+    let(:facts) {
+    {
+      :osfamily => 'RedHat'
+    }
+  }
+
+  context 'with defaults for all parameters' do
     it { is_expected.to contain_class('totpcgi::params') }
   end
 end
