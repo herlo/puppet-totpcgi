@@ -1,0 +1,28 @@
+
+# client configuration
+
+totpcgi::client::host: totp.example.com
+totpcgi::client::host_ip: 192.168.122.11
+totpcgi::client::ssl_cacert: /etc/ipa/ca.crt
+totpcgi::client::ssl_cert: "/etc/pki/puppet/certs/%{::fqdn}.pem"
+totpcgi::client::ssl_key: "/etc/pki/puppet/private/%{::fqdn}.pem"
+
+# there are two ways to perform the two factor authentication
+# two-step authentication prompts first for the pincode then token
+
+pam::pam_auth_lines:
+  - "auth        required      pam_env.so"
+  - "auth        sufficient    pam_unix.so nullok try_first_pass"
+  - "auth        requisite     pam_succeed_if.so uid >= 1000 quiet_success"
+  - "auth        requisite     pam_sss.so use_first_pass"
+  - "auth        sufficient    pam_url.so prepend_first_pass conf=/etc/pam_url.conf"
+  - "auth        required      pam_deny.so"
+
+# one-step authentication prompts for the pincode and token concatenated together
+
+pam::pam_auth_lines:
+  - "auth        required      pam_env.so"
+  - "auth        sufficient    pam_url.so conf=/etc/pam_url.conf"
+  - "auth        requisite     pam_succeed_if.so uid >= 1000 quiet_success"
+  - "auth        required      pam_deny.so"
+

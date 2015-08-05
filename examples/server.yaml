@@ -1,0 +1,53 @@
+
+users_totpcgi:
+  totpcgi:
+    ensure: present
+    comment: Totpcgi user
+    managehome: false
+    home: /var/lib/totpcgi
+    shell: /sbin/nologin
+  totpcgiprov:
+    ensure: present
+    comment: Totpcgi provisioning user
+    managehome: false
+    home: /etc/totpcgi
+    shell: /sbin/nologin
+
+totpcgi::require_pincode: 'True'
+totpcgi::pincode_engine: 'ldap'
+totpcgi::pincode_ldap_url: 'ldaps://ipa.example.com:636/'
+totpcgi::pincode_ldap_dn: 'uid=$username,cn=users,cn=accounts,dc=example,dc=com'
+totpcgi::pincode_ldap_cacert: '/etc/ipa/ca.crt'
+totpcgi::vhost_name: totpcgi
+totpcgi::servername: totp.egavas.org:8443
+totpcgi::serveradmin: admin@egavas.org
+totpcgi::docroot: /var/www/totpcgi
+totpcgi::port: 8443
+totpcgi::suexec_user_group: 'totpcgi totpcgi'
+totpcgi::ssl: true
+totpcgi::ssl_cacert: /etc/ipa/ca.crt
+totpcgi::ssl_cert: "/etc/pki/puppet/certs/%{::fqdn}.pem"
+totpcgi::ssl_key: "/etc/pki/puppet/private/%{::fqdn}.pem"
+totpcgi::ssl_verify_client: require
+totpcgi::ssl_verify_depth: 10
+totpcgi::error_log_file: totpcgi-error.log
+totpcgi::access_log_file: totpcgi-access.log
+totpcgi::broken_selinux_python_policy: true
+totpcgi::directories:
+  directoryindex: index.cgi
+  path: /var/www/totpcgi
+  options: ExecCGI
+  addhandlers:
+    handler: 'cgi-script'
+    extensions: '.cgi'
+totpcgi::provisioning: manual
+totpcgi::users:
+  bob:
+    encoded_secret: '2AA348X9K27GH0B4'
+    tokens:
+      - '01234567'
+      - '12345678'
+      - '23456789'
+      - '34567890'
+      - '45678901'
+
