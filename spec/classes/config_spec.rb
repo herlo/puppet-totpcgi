@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe 'totpcgi::config', :type => :class do
-  # set some default good params so we can override with bad ones in
-  # test
+describe 'totpcgi::config' do
   let(:facts) {
     {
       :fqdn            => 'test.example.com',
@@ -15,7 +13,6 @@ describe 'totpcgi::config', :type => :class do
 
   # we do not have default values so the class should fail compile
   context 'with defaults for all parameters' do
-    let(:params) {{}}
 
     it { should contain_file('/etc/totpcgi').with(
       'ensure'  => 'directory',
