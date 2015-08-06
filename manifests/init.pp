@@ -140,14 +140,11 @@ class totpcgi (
   }
 
   class { 'totpcgi::service':
-    access_log_file   => $access_log_file,
-    docroot           => $docroot,
-    directories       => $directories,
-    error_log_file    => $error_log_file,
+    vhost_name        => $vhost_name,
     port              => $port,
-    provisioning      => $provisioning,
     servername        => $servername,
     serveradmin       => $serveradmin,
+    docroot           => $docroot,
     suexec_user_group => $suexec_user_group,
     ssl               => $ssl,
     ssl_certs_dir     => $ssl_certs_dir,
@@ -158,7 +155,11 @@ class totpcgi (
     ssl_verify_depth  => $ssl_verify_depth,
     totpcgi_group     => $totpcgi_group,
     totpcgi_owner     => $totpcgi_owner,
-    vhost_name        => $vhost_name,
+    access_log_file   => $access_log_file,
+    error_log_file    => $error_log_file,
+    directories       => $directories,
+    tokens            => $tokens,
+    provisioning      => $provisioning,
   }
 
   Anchor['totpcgi::begin'] ->

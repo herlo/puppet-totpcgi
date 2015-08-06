@@ -16,11 +16,11 @@
 # @License Apache-2.0 <http://spdx.org/licenses/Apache-2.0>
 #
 class totpcgi::service (
-  $docroot,
+  $vhost_name,
   $port,
-  $provisioning,
   $servername,
   $serveradmin,
+  $docroot,
   $suexec_user_group,
   $ssl,
   $ssl_certs_dir,
@@ -29,13 +29,13 @@ class totpcgi::service (
   $ssl_key,
   $ssl_verify_client,
   $ssl_verify_depth,
-  $tokens,
   $totpcgi_group,
   $totpcgi_owner,
-  $vhost_name,
-  $access_log_file = undef,
-  $directories     = undef,
-  $error_log_file  = undef,
+  $access_log_file  = undef,
+  $error_log_file   = undef,
+  $directories      = undef,
+  $tokens           = undef,
+  $provisioning     = undef,
 ) {
   validate_absolute_path($docroot)
   if $access_log_file {
