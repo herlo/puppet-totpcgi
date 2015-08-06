@@ -8,6 +8,7 @@ describe 'totpcgi', :type => :class do
       :operatingsystem        => 'CentOS',
       :operatingsystemrelease => '7',
       :osfamily               => 'RedHat'
+      :concat_basedir         => '/foo'
     }
   }
 
