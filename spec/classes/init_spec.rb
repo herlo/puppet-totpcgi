@@ -14,7 +14,7 @@ describe 'totpcgi', :type => :class do
   context 'with defaults for all parameters' do
     let(:params) {
       {
-        :servername => :fqdn,
+        :servername => 'test.example.com',
         :docroot    => '/var/www/totpcgi',
         :suexec_user_group => 'totpcgi totpcgi',
         :ssl_cacert => '/etc/ipa/ca.crt',
