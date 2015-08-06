@@ -21,7 +21,7 @@ describe 'totpcgi', :type => :class do
         :ssl_cert   => '/etc/pki/puppet/certs/test.example.com.pem',
         :ssl_key    => '/etc/pki/puppet/private/test.example.com.pem',
         :ssl_verify_client => 'require',
-        :ssl_verify_depth => '10',
+        :ssl_verify_depth => '10'
       }
     }
     it { should contain_class('totpcgi') }
