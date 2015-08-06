@@ -97,7 +97,23 @@ class totpcgi (
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
-  include totpcgi::config
+  class { 'totpcgi::config':
+    totpcgi_config => $totpcgi_config,
+    totpcgi_config_dir => $totpcgi_config_dir,
+    totpcgi_group => $totpcgi_group,
+    totpcgi_owner => $totpcgi_owner,
+    provisioning_config => $provisioning_config,
+    provisioning_group => $provisioning_group,
+    provisioning_owner => $provisioning_owner,
+    pincode_engine => $pincode_engine,
+    pincode_file => $pincode_file,
+    pincode_ldap_cacert => $pincode_ldap_cacert,
+    secrets_dir => $secrets_dir,
+    secret_engine => $secret_engine,
+    state_engine => $state_engine,
+    state_dir => $state_dir,
+    broken_selinux_python_policy => $broken_selinux_python_policy,
+  }
 
   class { 'totpcgi::install':
     install_totpcgi => $install_totpcgi,
