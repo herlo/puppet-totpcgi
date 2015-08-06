@@ -23,13 +23,14 @@ describe 'totpcgi::config' do
         :provisioning_config  => '/etc/totpcgi/provisioning.conf',
         :provisioning_owner   => 'totpcgiprov',
         :provisioning_group   => 'totpcgiprov',
-        :pincode_engine => 'file',
-        :pincode_file   => '/etc/totpcgi/totpcgi.conf',
         :secret_engine  => 'file',
         :secrets_dir    => '/etc/totpcgi/totp',
         :state_engine   => 'file',
         :state_dir      => '/var/lib/totpcgi',
-        :broken_selinux_python_policy   => 'true',
+        :pincode_engine => 'file',
+        :pincode_file   => '/etc/totpcgi/totpcgi.conf',
+        :pincode_usehash => 'sha256',
+        :pincode_makedb => 'True'
       }
     }
 
