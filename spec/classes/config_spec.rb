@@ -39,9 +39,7 @@ describe 'totpcgi::config' do
       }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
         /Must pass /)
     end
-  end
 
-  context 'with basic init defaults' do
     it { should contain_file('/etc/totpcgi').with(
       'ensure'  => 'directory',
       'owner'   => 'totpcgiprov',
