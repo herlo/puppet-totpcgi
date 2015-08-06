@@ -16,12 +16,16 @@
 #
 
 class totpcgi::install (
-) inherits totpcgi {
+  $install_totpcgi,
+  $install_qrcode,
+) {
+  validate_bool($install_totpcgi)
+  validate_bool($install_qrcode)
 
   if ($install_totpcgi) {
 
     include totpcgi::repo
-    users { totpcgi: }
+    users { 'totpcgi': }
 
     package { ['totpcgi', 'totpcgi-selinux', 'totpcgi-provisioning']:
       require => [

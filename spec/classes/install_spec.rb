@@ -5,11 +5,12 @@ describe 'totpcgi::install', :type => :class do
   # test
     let(:facts) {
     {
-      :fqdn            => 'test.example.com',
-      :hostname        => 'test',
-      :ipaddress       => '192.168.0.1',
-      :operatingsystem => 'CentOS',
-      :osfamily        => 'RedHat'
+      :fqdn                   => 'test.example.com',
+      :hostname               => 'test',
+      :ipaddress              => '192.168.0.1',
+      :operatingsystem        => 'CentOS',
+      :operatingsystemrelease => '7',
+      :osfamily               => 'RedHat'
     }
   }
 
@@ -21,14 +22,15 @@ describe 'totpcgi::install', :type => :class do
       expect {
         should compile
       }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
-        /Must pass group/)
+        /Must pass /)
     end
   end
 
    context 'with basic init defaults' do
          let(:params) {
       {
-        'install_totpcgi' => true
+        'install_totpcgi' => true,
+        'install_qrcode'  => true,
       }
     }
     it { should contain_class('totpcgi::install') }

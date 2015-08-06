@@ -15,13 +15,43 @@
 # @License Apache-2.0 <http://spdx.org/licenses/Apache-2.0>
 #
 class totpcgi::service (
-) inherits totpcgi {
+  $docroot,
+  $port,
+  $provisioning,
+  $servername,
+  $serveradmin,
+  $suexec_user_group,
+  $ssl,
+  $ssl_certs_dir,
+  $ssl_cacert,
+  $ssl_cert,
+  $ssl_key,
+  $ssl_verify_client,
+  $ssl_verify_depth,
+  $tokens,
+  $totpcgi_group,
+  $totpcgi_owner,
+  $vhost_name,
+  $access_log_file = undef,
+  $directories     = undef,
+  $error_log_file  = undef,
+) {
+  validate_absolute_path($docroot)
+  if $access_log_file {
+    validate_absolute_path($access_log_file)
+  }
+  if $directories {
+    validate_array($directories)
+  }
+  if $error_log_file {
+    validate_absolute_path($error_log_file)
+  }
 
   class { 'apache':
     default_vhost => false,
   }
 
-  ::apache::vhost{ "$vhost_name":
+  ::apache::vhost{ $vhost_name:
     port              => $port,
     servername        => $servername,
     serveradmin       => $serveradmin,
@@ -38,27 +68,27 @@ class totpcgi::service (
     access_log_file   => $access_log_file,
     directories       => $directories,
     require           => [
-      File["$docroot"],
+      File[$docroot],
       File["${docroot}/index.cgi"],
     ],
   }
 
-  file { "$docroot":
-    ensure  => directory,
-    owner   => $totpcgi_owner,
-    group   => $totpcgi_group,
-    mode    => '0751',
+  file { $docroot:
+    ensure => directory,
+    owner  => $totpcgi_owner,
+    group  => $totpcgi_group,
+    mode   => '0751',
   }
 
   file { "${docroot}/index.cgi":
-    ensure  => file,
-    owner   => $totpcgi_owner,
-    group   => $totpcgi_group,
-    mode    => '0550',
+    ensure => file,
+    owner  => $totpcgi_owner,
+    group  => $totpcgi_group,
+    mode   => '0550',
   }
 
   if $provisioning == 'manual' {
-    create_resources('totpcgi::provision::manual', $totpcgi::tokens)
+    create_resources('totpcgi::provision::manual', $tokens)
   }
 
 }

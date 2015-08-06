@@ -3,17 +3,28 @@ require 'spec_helper'
 describe 'totpcgi::config' do
   let(:facts) {
     {
-      :fqdn            => 'test.example.com',
-      :hostname        => 'test',
-      :ipaddress       => '192.168.0.1',
-      :operatingsystem => 'CentOS',
-      :osfamily        => 'RedHat'
+      :fqdn                   => 'test.example.com',
+      :hostname               => 'test',
+      :ipaddress              => '192.168.0.1',
+      :operatingsystem        => 'CentOS',
+      :operatingsystemrelease => '7',
+      :osfamily               => 'RedHat'
     }
   }
 
   # we do not have default values so the class should fail compile
   context 'with defaults for all parameters' do
+    let(:params) {{}}
 
+    it do
+      expect {
+        should compile
+      }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
+        /Must pass /)
+    end
+  end
+
+  context 'with basic init defaults' do
     it { should contain_file('/etc/totpcgi').with(
       'ensure'  => 'directory',
       'owner'   => 'totpcgiprov',

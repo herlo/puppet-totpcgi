@@ -80,7 +80,7 @@ class totpcgi::params {
   $state_mysql_connect_db   = undef
 
   # apache configs
-  $vhost_name               = undef
+  $vhost_name               = $::fqdn
   $port                     = '8443'
   $servername               = undef
   $serveradmin              = 'admin@example.com'

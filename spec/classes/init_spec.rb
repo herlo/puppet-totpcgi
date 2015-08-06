@@ -3,11 +3,12 @@ require 'spec_helper'
 describe 'totpcgi', :type => :class do
     let(:facts) {
     {
-      :fqdn            => 'test.example.com',
-      :hostname        => 'test',
-      :ipaddress       => '192.168.0.1',
-      :operatingsystem => 'CentOS',
-      :osfamily        => 'RedHat'
+      :fqdn                   => 'test.example.com',
+      :hostname               => 'test',
+      :ipaddress              => '192.168.0.1',
+      :operatingsystem        => 'CentOS',
+      :operatingsystemrelease => '7',
+      :osfamily               => 'RedHat'
     }
   }
 
