@@ -17,7 +17,6 @@
 #
 
 class totpcgi::config (
-  $broken_selinux_python_policy,
   $pincode_engine,
   $pincode_file,
   $pincode_ldap_cacert,
