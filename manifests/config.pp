@@ -51,6 +51,7 @@ class totpcgi::config (
   $state_mysql_connect_user = undef,
   $state_mysql_connect_password = undef,
   $state_mysql_connect_db   = undef,
+  $broken_selinux_python_policy = false,
 ) {
 
   file { $totpcgi_config_dir:
