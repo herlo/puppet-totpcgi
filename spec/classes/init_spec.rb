@@ -17,12 +17,12 @@ describe 'totpcgi', :type => :class do
       {
         :servername => :fqdn,
         :docroot    => '/var/www/totpcgi',
-        :suexec_user_group = 'totpcgi totpcgi',
-        :ssl_cacert '/etc/ipa/ca.crt',
-        :ssl_cert '/etc/pki/puppet/certs/test.example.com.pem',
-        :ssl_key '/etc/pki/puppet/private/test.example.com.pem',
-        :ssl_verify_client = 'require',
-        :ssl_verify_depth = '10',
+        :suexec_user_group => 'totpcgi totpcgi',
+        :ssl_cacert => '/etc/ipa/ca.crt',
+        :ssl_cert   => '/etc/pki/puppet/certs/test.example.com.pem',
+        :ssl_key    =>'/etc/pki/puppet/private/test.example.com.pem',
+        :ssl_verify_client => 'require',
+        :ssl_verify_depth => '10',
       }
     }
     it { should contain_class('totpcgi') }
