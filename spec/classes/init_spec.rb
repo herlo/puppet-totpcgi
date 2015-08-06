@@ -22,6 +22,20 @@ describe 'totpcgi', :type => :class do
         :ssl_key    => '/etc/pki/puppet/private/test.example.com.pem',
         :ssl_verify_client => 'require',
         :ssl_verify_depth => '10'
+        :users_totpcgi => {
+          'totpcgi' => {
+            'ensure' => 'present',
+            'managehome' => 'false',
+            'home' => '/var/lib/totpcgi',
+            'shell' => '/sbin/nologin'
+          }
+          'totpcgiprov' => {
+            'ensure' => 'present',
+            'managehome' => 'false',
+            'home' => '/etc/totpcgi',
+            'shell' => '/sbin/nologin'
+          }
+        }
       }
     }
     it { should contain_class('totpcgi') }
