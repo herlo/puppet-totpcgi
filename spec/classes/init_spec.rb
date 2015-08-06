@@ -28,7 +28,7 @@ describe 'totpcgi', :type => :class do
             'managehome' => 'false',
             'home' => '/var/lib/totpcgi',
             'shell' => '/sbin/nologin'
-          }
+          },
           'totpcgiprov' => {
             'ensure' => 'present',
             'managehome' => 'false',
