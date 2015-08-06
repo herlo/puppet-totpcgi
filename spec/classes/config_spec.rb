@@ -14,7 +14,23 @@ describe 'totpcgi::config' do
 
   # we do not have default values so the class should fail compile
   context 'with defaults for all parameters' do
-    let(:params) {{}}
+    let(:params) {
+      {
+        :totpcgi_config => '/etc/totpcgi/totpcgi.conf',
+        :totpcgi_group      => 'totpcgi',
+        :totpcgi_owner      => 'totpcgi',
+        :provisioning_config  => '/etc/totpcgi/provisioning.conf',
+        :provisioning_owner   => 'totpcgiprov',
+        :provisioning_group   => 'totpcgiprov',
+        :pincode_engine => 'file',
+        :pincode_file   > '/etc/totpcgi/totpcgi.conf',
+        :secret_engine  => 'file',
+        :secrets_dir    => '/etc/totpcgi/totp',
+        :state_engine   => 'file',
+        :state_dir      => '/var/lib/totpcgi',
+        :broken_selinux_python_policy   => 'true',
+      }
+    }
 
     it do
       expect {

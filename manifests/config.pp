@@ -17,20 +17,20 @@
 #
 
 class totpcgi::config (
-  $pincode_engine,
-  $pincode_file,
-  $pincode_ldap_cacert,
+  $totpcgi_config,
+  $totpcgi_config_dir,
+  $totpcgi_group,
+  $totpcgi_owner,
   $provisioning_config,
   $provisioning_group,
   $provisioning_owner,
   $secrets_dir,
   $secret_engine,
+  $pincode_engine,
+  $pincode_file,
+  $pincode_ldap_cacert,
   $state_engine,
   $state_dir,
-  $totpcgi_config,
-  $totpcgi_config_dir,
-  $totpcgi_group,
-  $totpcgi_owner,
   $broken_selinux_python_policy,
 ) {
 
