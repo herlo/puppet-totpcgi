@@ -16,6 +16,7 @@ describe 'totpcgi::config' do
   context 'with defaults for all parameters' do
     let(:params) {
       {
+        :totpcgi_config_dir => '/etc/totpcgi',
         :totpcgi_config => '/etc/totpcgi/totpcgi.conf',
         :totpcgi_group      => 'totpcgi',
         :totpcgi_owner      => 'totpcgi',
