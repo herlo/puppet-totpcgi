@@ -28,7 +28,7 @@ describe 'totpcgi::config' do
         :state_engine   => 'file',
         :state_dir      => '/var/lib/totpcgi',
         :pincode_engine => 'file',
-        :pincode_file   => '/etc/totpcgi/totpcgi.conf',
+        :pincode_file   => '/etc/totpcgi/pincodes',
         :pincode_usehash => 'sha256',
         :pincode_makedb => 'True'
       }
