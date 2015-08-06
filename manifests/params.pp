@@ -20,6 +20,7 @@ class totpcgi::params {
   $install_totpcgi    = true
   $install_qrcode     = true
   $totpcgi_config_dir = '/etc/totpcgi'
+  $users              = undef
   $provisioning       = undef # use 'manual' as 'automatic' is not yet supported
   $require_pincode    = 'False'
   $success_string     = 'OK'
@@ -52,10 +53,10 @@ class totpcgi::params {
   $secret_engine             = 'file'
   $secrets_dir               = "$totpcgi_config_dir/totp"
   $secret_pg_connect_string  = 'user= password= host= dbname='
-  $secret_mysql_connect_host = ''
-  $secret_mysql_connect_user = ''
-  $secret_mysql_connect_password = ''
-  $secret_mysql_connect_db   = ''
+  $secret_mysql_connect_host = undef
+  $secret_mysql_connect_user = undef
+  $secret_mysql_connect_password = undef
+  $secret_mysql_connect_db   = undef
 
   # pincode backend
   $pincode_engine             = 'file'
