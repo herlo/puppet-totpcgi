@@ -50,7 +50,7 @@ describe 'totpcgi::config' do
 
     it { should contain_file('/etc/totpcgi/totpcgi.conf').with(
       'ensure'  => 'file',
-      'owner'   => 'totpcgiprov',
+      'owner'   => 'totpcgi',
       'group'   => 'totpcgi',
       'mode'    => '0640',
     )}
