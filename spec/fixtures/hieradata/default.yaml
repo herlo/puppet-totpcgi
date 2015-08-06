@@ -1,3 +1,17 @@
 ---
+users_totpcgi:
+  totpcgi:
+    ensure: present
+    comment: Totpcgi user
+    managehome: false
+    home: /var/lib/totpcgi
+    shell: /sbin/nologin
+  totpcgiprov:
+    ensure: present
+    comment: Totpcgi provisioning user
+    managehome: false
+    home: /etc/totpcgi
+    shell: /sbin/nologin
+
 
 # vim: ts=2 sw=2 sts=2 et ai :
