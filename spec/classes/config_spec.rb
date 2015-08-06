@@ -23,7 +23,7 @@ describe 'totpcgi::config' do
         :provisioning_owner   => 'totpcgiprov',
         :provisioning_group   => 'totpcgiprov',
         :pincode_engine => 'file',
-        :pincode_file   > '/etc/totpcgi/totpcgi.conf',
+        :pincode_file   => '/etc/totpcgi/totpcgi.conf',
         :secret_engine  => 'file',
         :secrets_dir    => '/etc/totpcgi/totp',
         :state_engine   => 'file',
