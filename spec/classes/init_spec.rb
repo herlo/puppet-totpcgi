@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe 'totpcgi', :type => :class do
     let(:facts) {
     {
