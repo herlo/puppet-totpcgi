@@ -29,7 +29,6 @@ class totpcgi (
   $require_pincode                = $totpcgi::params::require_pincode,
   $success_string                 = $totpcgi::params::success_string,
   $encrypt_secret                 = $totpcgi::params::encrypt_secret,
-  $users                          = $totpcgi::params::users,
   $window_size                    = $totpcgi::params::window_size,
   $rate_limit                     = $totpcgi::params::rate_limit,
   $disallow_reuse                 = $totpcgi::params::disallow_reuse,

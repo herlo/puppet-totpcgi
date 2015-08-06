@@ -20,7 +20,6 @@ class totpcgi::params {
   $install_totpcgi    = true
   $install_qrcode     = true
   $totpcgi_config_dir = '/etc/totpcgi'
-  $users              = undef
   $provisioning       = undef # use 'manual' as 'automatic' is not yet supported
   $require_pincode    = 'False'
   $success_string     = 'OK'
