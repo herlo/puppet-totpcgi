@@ -17,7 +17,7 @@
 
 class totpcgi (
   $install_totpcgi                = $totpcgi::params::install_totpcgi,
-  $install_qrcode                 = $totpcgi::params::install_pincode,
+  $install_qrcode                 = $totpcgi::params::install_qrcode,
   $provisioning                   = $totpcgi::params::provisioning,
   $totpcgi_config                 = $totpcgi::params::totpcgi_config,
   $totpcgi_owner                  = $totpcgi::params::totpcgi_owner,
@@ -96,13 +96,35 @@ class totpcgi (
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
+  include totpcgi::config
+
   class { 'totpcgi::install':
     install_totpcgi => $install_totpcgi,
     install_qrcode  => $install_qrcode,
   }
 
-  include totpcgi::config
-  include totpcgi::service
+  class { 'totpcgi::service':
+    access_log_file   => $access_log_file,
+    docroot           => $docroot,
+    directories       => $directories,
+    error_log_file    => $error_log_file,
+    port              => $port,
+    provisioning      => $provisioning,
+    servername        => $servername,
+    serveradmin       => $serveradmin,
+    suexec_user_group => $suexec_user_group,
+    ssl               => $ssl,
+    ssl_certs_dir     => $ssl_certs_dir,
+    ssl_cacert        => $ssl_cacert,
+    ssl_cert          => $ssl_cert,
+    ssl_key           => $ssl_key,
+    ssl_verify_client => $ssl_verify_client,
+    ssl_verify_depth  => $ssl_verify_depth,
+    totpcgi_group     => $totpcgi_group,
+    totpcgi_owner     => $totpcgi_owner,
+    users             => $users,
+    vhost_name        => $vhost_name,
+  }
 
   Anchor['totpcgi::begin'] ->
     Class['totpcgi::install'] ->

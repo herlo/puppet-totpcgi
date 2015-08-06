@@ -15,16 +15,32 @@
 # @License Apache-2.0 <http://spdx.org/licenses/Apache-2.0>
 #
 
-class totpcgi::config inherits totpcgi {
+class totpcgi::config (
+  $broken_selinux_python_policy,
+  $pincode_engine,
+  $pincode_file,
+  $pincode_ldap_cacert,
+  $provisioning_config,
+  $provisioning_group,
+  $provisioning_owner,
+  $secrets_dir,
+  $secret_engine,
+  $state_engine,
+  $state_dir,
+  $totpcgi_config,
+  $totpcgi_config_dir,
+  $totpcgi_group,
+  $totpcgi_owner,
+) {
 
-  file { "$totpcgi_config_dir":
-    ensure  => directory,
-    owner   => $provisioning_owner,
-    group   => $totpcgi_group,
-    mode    => '0750',
+  file { $totpcgi_config_dir:
+    ensure => directory,
+    owner  => $provisioning_owner,
+    group  => $totpcgi_group,
+    mode   => '0750',
   }
 
-  file { "$totpcgi_config":
+  file { $totpcgi_config:
     ensure  => file,
     owner   => $totpcgi_owner,
     group   => $totpcgi_group,
@@ -32,7 +48,7 @@ class totpcgi::config inherits totpcgi {
     content => template('totpcgi/totpcgi.conf.erb'),
   }
 
-  file { "$provisioning_config":
+  file { $provisioning_config:
     ensure  => file,
     owner   => $provisioning_owner,
     group   => $provisioning_group,
@@ -40,40 +56,40 @@ class totpcgi::config inherits totpcgi {
     content => template('totpcgi/provisioning.conf.erb'),
   }
 
-  if $secret_engine == "file" {
-    file { "$secrets_dir":
-      ensure  => directory,
-      owner   => $provisioning_owner,
-      group   => $totpcgi_group,
-      mode    => '0750',
+  if $secret_engine == 'file' {
+    file { $secrets_dir:
+      ensure => directory,
+      owner  => $provisioning_owner,
+      group  => $totpcgi_group,
+      mode   => '0750',
     }
   }
 
-  if $pincode_engine == "file" {
-    file { "$pincode_file":
+  if $pincode_engine == 'file' {
+    file { $pincode_file:
+      ensure => file,
+      owner  => 'root',
+      group  => $totpcgi_group,
+      mode   => '0640',
+    }
+  }
+
+  if $pincode_engine == 'ldap' {
+    file { $pincode_ldap_cacert:
       ensure  => file,
-      owner   => 'root',
-      group   => $totpcgi_group,
-      mode    => '0640',
     }
   }
 
-  if $pincode_engine == "ldap" {
-    file { "$pincode_ldap_cacert":
-      ensure  => file,
+  if $state_engine == 'file' {
+    file { $state_dir:
+      ensure => directory,
+      owner  => $provisioning_owner,
+      group  => $totpcgi_group,
+      mode   => '0770',
     }
   }
 
-  if $state_engine == "file" {
-    file { "$state_dir":
-      ensure  => directory,
-      owner   => $provisioning_owner,
-      group   => $totpcgi_group,
-      mode    => '0770',
-    }
-  }
-
-  if $broken_selinux_python_policy{
+  if $broken_selinux_python_policy {
       include selinux::base
       selinux::module { 'mytotpcgi':
         source => 'puppet:///modules/totpcgi/mytotpcgi.te'
