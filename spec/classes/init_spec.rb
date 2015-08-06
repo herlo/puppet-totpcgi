@@ -14,7 +14,6 @@ describe 'totpcgi', :type => :class do
 
   context 'with defaults for all parameters' do
     it { should contain_class('totpcgi') }
-    it { should contain_class('totpcgi::params') }
     it { should contain_anchor('totpcgi::begin') }
     it { should contain_class('totpcgi::install') }
     it { should contain_class('totpcgi::config') }
