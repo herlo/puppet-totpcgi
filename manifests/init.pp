@@ -139,7 +139,6 @@ class totpcgi (
     ssl_verify_depth  => $ssl_verify_depth,
     totpcgi_group     => $totpcgi_group,
     totpcgi_owner     => $totpcgi_owner,
-    users             => $users,
     vhost_name        => $vhost_name,
   }
 
