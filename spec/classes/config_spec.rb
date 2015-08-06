@@ -14,6 +14,17 @@ describe 'totpcgi::config' do
 
   # we do not have default values so the class should fail compile
   context 'with defaults for all parameters' do
+    let (:params) {{}}
+
+    it do
+      expect {
+        should compile
+      }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
+        /Must pass /)
+    end
+  end
+
+  context 'with basic config defaults' do
     let(:params) {
       {
         :totpcgi_config_dir => '/etc/totpcgi',
@@ -33,13 +44,6 @@ describe 'totpcgi::config' do
         :pincode_makedb => 'True'
       }
     }
-
-    it do
-      expect {
-        should compile
-      }.to raise_error(RSpec::Expectations::ExpectationNotMetError,
-        /Must pass /)
-    end
 
     it { should contain_file('/etc/totpcgi').with(
       'ensure'  => 'directory',
