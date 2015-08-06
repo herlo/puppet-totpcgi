@@ -1,5 +1,5 @@
 
-define totpcgi::provision::manual (
+define totpcgi::provision (
   $encoded_secret,
   $tokens = undef,
 ) {

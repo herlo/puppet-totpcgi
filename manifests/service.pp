@@ -89,7 +89,7 @@ class totpcgi::service (
   }
 
   if $provisioning == 'manual' {
-    create_resources('totpcgi::provision::manual', $tokens)
+    create_resources('totpcgi::provision', $tokens)
   }
 
 }
