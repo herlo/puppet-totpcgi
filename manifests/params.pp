@@ -35,14 +35,14 @@ class totpcgi::params {
   $totp_user_mask     = '$username@example.com'
   $action_url         = '/index.cgi'
   $css_root           = '/'
-  $templates_dir      = "$totpcgi_config_dir/templates"
+  $templates_dir      = "${totpcgi_config_dir}/templates"
   $trust_http_auth    = 'False'
 
-  $totpcgi_config             = "$totpcgi_config_dir/totpcgi.conf"
+  $totpcgi_config             = "${totpcgi_config_dir}/totpcgi.conf"
   $totpcgi_owner              = 'totpcgi'
   $totpcgi_group              = 'totpcgi'
 
-  $provisioning_config        = "$totpcgi_config_dir/provisioning.conf"
+  $provisioning_config        = "${totpcgi_config_dir}/provisioning.conf"
   $provisioning_owner         = 'totpcgiprov'
   $provisioning_group         = 'totpcgiprov'
 
@@ -50,7 +50,7 @@ class totpcgi::params {
 
   # secret backend
   $secret_engine             = 'file'
-  $secrets_dir               = "$totpcgi_config_dir/totp"
+  $secrets_dir               = "${totpcgi_config_dir}/totp"
   $secret_pg_connect_string  = 'user= password= host= dbname='
   $secret_mysql_connect_host = undef
   $secret_mysql_connect_user = undef
@@ -61,7 +61,7 @@ class totpcgi::params {
   $pincode_engine             = 'file'
   $pincode_usehash            = 'sha256'
   $pincode_makedb             = 'True'
-  $pincode_file               = "$totpcgi_config_dir/pincodes"
+  $pincode_file               = "${totpcgi_config_dir}/pincodes"
   $pincode_pg_connect_string  = 'user= password= host= dbname='
   $pincode_mysql_connect_host = undef
   $pincode_mysql_connect_user = undef
@@ -109,7 +109,7 @@ class totpcgi::params {
   $host             = undef
   $host_ip          = undef
   $pam_url_config   = '/etc/pam_url.conf'
-  $pam_url_prompt   = "Token: "
+  $pam_url_prompt   = 'Token: '
 
 }
 
