@@ -5,6 +5,7 @@
 # === Authors
 #
 # Clint Savage <herlo@linuxfoundation.org>
+# Andrew Grimberg <agrimberg@linuxfoundation.org>
 #
 # === Copyright
 #
@@ -31,6 +32,7 @@ class totpcgi::config (
   $totpcgi_config_dir,
   $totpcgi_group,
   $totpcgi_owner,
+  $broken_selinux_python_policy,
 ) {
 
   file { $totpcgi_config_dir:

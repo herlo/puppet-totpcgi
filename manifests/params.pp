@@ -5,6 +5,7 @@
 # === Authors
 #
 # Clint Savage <herlo@linuxfoundation.org>
+# Andrew Grimberg <agrimberg@linuxfoundation.org>
 #
 # === Copyright
 #
@@ -102,7 +103,7 @@ class totpcgi::params {
   # turning on this variable will enable the temporary
   # policy to fix the problem
 
-  $broken_selinux_python_policy = False
+  $broken_selinux_python_policy = false
 
   # client only configs
   $host             = undef
