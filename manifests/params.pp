@@ -88,7 +88,7 @@ class totpcgi::params {
   $docroot                  = undef
   $suexec_user_group        = undef
   $ssl                      = true
-  $ssl_certs_dir            = undef
+  $ssl_certs_dir            = ''
   $ssl_cacert               = undef
   $ssl_cert                 = undef
   $ssl_key                  = undef
