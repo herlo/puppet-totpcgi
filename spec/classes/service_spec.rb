@@ -8,7 +8,7 @@ describe 'totpcgi::service' do
       :ipaddress              => '192.168.0.1',
       :operatingsystem        => 'CentOS',
       :operatingsystemrelease => '7',
-      :osfamily               => 'RedHat'
+      :osfamily               => 'RedHat',
       :concat_basedir         => '/foo'
     }
   }
