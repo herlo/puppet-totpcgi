@@ -45,14 +45,14 @@ describe 'totpcgi::service' do
       'ensure'  => 'directory',
       'owner'   => 'totpcgi',
       'group'   => 'totpcgi',
-      'mode'    => '0750',
+      'mode'    => '0751',
     )}
 
     it { should contain_file('/var/www/totpcgi/index.cgi').with(
       'ensure'  => 'file',
       'owner'   => 'totpcgi',
       'group'   => 'totpcgi',
-      'mode'    => '0640',
+      'mode'    => '0550',
     )}
 
   end
