@@ -28,6 +28,7 @@ describe 'totpcgi::service' do
     let(:params) {
       {
         :vhost_name => 'test.example.com',
+        :port       => 8140,
         :servername => 'test.example.com',
         :docroot    => '/var/www/totpcgi',
         :suexec_user_group => 'totpcgi totpcgi',
@@ -35,7 +36,7 @@ describe 'totpcgi::service' do
         :ssl_cert   => '/etc/pki/puppet/certs/test.example.com.pem',
         :ssl_key    => '/etc/pki/puppet/private/test.example.com.pem',
         :ssl_verify_client => 'require',
-        :ssl_verify_depth => '10',
+        :ssl_verify_depth => 10,
         :totpcgi_owner => 'totpcgi',
         :totpcgi_group => 'totpcgi',
       }
