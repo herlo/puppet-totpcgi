@@ -97,6 +97,11 @@ class totpcgi (
   anchor { 'totpcgi::begin': }
   anchor { 'totpcgi::end': }
 
+  class { 'totpcgi::install':
+    install_totpcgi => $install_totpcgi,
+    install_qrcode  => $install_qrcode,
+  }
+
   class { 'totpcgi::config':
     totpcgi_config                 => $totpcgi_config,
     totpcgi_config_dir             => $totpcgi_config_dir,
@@ -132,11 +137,6 @@ class totpcgi (
     state_mysql_connect_user       => $state_mysql_connect_user,
     state_mysql_connect_password   => $state_mysql_connect_password,
     state_mysql_connect_db         => $state_mysql_connect_db,
-  }
-
-  class { 'totpcgi::install':
-    install_totpcgi => $::install_totpcgi,
-    install_qrcode  => $::install_qrcode,
   }
 
   class { 'totpcgi::service':
