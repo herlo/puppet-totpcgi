@@ -37,15 +37,30 @@ class totpcgi::service (
   $tokens           = undef,
   $provisioning     = undef,
 ) {
+  validate_string($vhost_name)
+  validate_integer($port)
+  validate_string($servername)
+  validate_string($serveradmin)
+  validate_bool($ssl)
+  if $ssl_certs_dir {
+    validate_string($ssl_certs_dir)
+  }
+  validate_absolute_path($ssl_cacert)
+  validate_absolute_path($ssl_cert)
+  validate_absolute_path($ssl_key)
+  validate_string($ssl_verify_client)
+  validate_integer($ssl_verify_depth)
+  validate_string($totpcgi_owner)
+  validate_string($totpcgi_group)
   validate_absolute_path($docroot)
   if $access_log_file {
-    validate_absolute_path($access_log_file)
-  }
-  if $directories {
-    validate_array($directories)
+    validate_string($access_log_file)
   }
   if $error_log_file {
-    validate_absolute_path($error_log_file)
+    validate_string($error_log_file)
+  }
+  if $directories {
+    validate_hash($directories)
   }
 
   class { 'apache':
