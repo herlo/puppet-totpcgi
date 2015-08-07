@@ -68,6 +68,7 @@ class totpcgi::service (
     error_log_file    => $error_log_file,
     access_log_file   => $access_log_file,
     directories       => $directories,
+    tokens            => $tokens,
     require           => [
       File[$docroot],
       File["${docroot}/index.cgi"],
