@@ -34,11 +34,11 @@ class totpcgi::client (
     require => Class['::totpcgi::repo'],
   }
 
-  host { "$host":
+  host { $host:
     ip => $host_ip,
   }
 
-  file { "$pam_url_config":
+  file { $pam_url_config:
     ensure  => file,
     owner   => 'root',
     group   => 'root',
