@@ -22,7 +22,7 @@ class totpcgi::service (
   $serveradmin,
   $docroot,
   $suexec_user_group,
-  $ssl,
+  $ssl              = true,
   $ssl_certs_dir    = undef,
   $ssl_cacert,
   $ssl_cert,
