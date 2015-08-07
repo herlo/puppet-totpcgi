@@ -111,7 +111,7 @@ class totpcgi (
     provisioning_config             => $provisioning_config,
     provisioning_group              => $provisioning_group,
     provisioning_owner              => $provisioning_owner,
-    $require_pincode                => $require_pincode,
+    require_pincode                 => $require_pincode,
     success_string                  => $success_string,
     encrypt_secret                  => $encrypt_secret,
     window_size                     => $window_size,
