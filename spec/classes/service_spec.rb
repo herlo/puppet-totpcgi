@@ -30,7 +30,7 @@ describe 'totpcgi::service' do
         :vhost_name => 'test.example.com',
         :port       => 8140,
         :servername => 'test.example.com',
-        :servername => 'admin@example.com',
+        :serveradmin => 'admin@example.com',
         :docroot    => '/var/www/totpcgi',
         :suexec_user_group => 'totpcgi totpcgi',
         :ssl_cacert => '/etc/ipa/ca.crt',
