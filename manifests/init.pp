@@ -91,7 +91,9 @@ class totpcgi (
   $access_log_file                = $totpcgi::params::access_log_file,
   $directories                    = $totpcgi::params::directories,
   $tokens                         = $totpcgi::params::tokens,
+  # lint:ignore:80chars
   $broken_selinux_python_policy   = $totpcgi::params::broken_selinux_python_policy,
+  # lint:endignore
 ) inherits totpcgi::params {
   # Make sure that all the params are properly formatted
 
@@ -104,6 +106,7 @@ class totpcgi (
   }
 
   class { 'totpcgi::config':
+    # lint:ignore:arrow_alignment
     totpcgi_config                  => $totpcgi_config,
     totpcgi_config_dir              => $totpcgi_config_dir,
     totpcgi_group                   => $totpcgi_group,
@@ -150,6 +153,7 @@ class totpcgi (
     state_mysql_connect_user        => $state_mysql_connect_user,
     state_mysql_connect_password    => $state_mysql_connect_password,
     state_mysql_connect_db          => $state_mysql_connect_db,
+    # lint:endignore
   }
 
   class { 'totpcgi::service':
