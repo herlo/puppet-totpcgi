@@ -55,12 +55,6 @@ describe 'totpcgi::config' do
         :pincode_usehash => 'sha256',
         :pincode_makedb => 'True'
       }
-
-  $secret_engine,
-  $pincode_engine,
-  $pincode_usehash,
-  $pincode_makedb,
-  $state_engine,
     }
 
     it { should contain_file('/etc/totpcgi').with(
