@@ -53,7 +53,7 @@ describe 'totpcgi::config' do
         :pincode_engine => 'file',
         :pincode_file   => '/etc/totpcgi/pincodes',
         :pincode_usehash => 'sha256',
-        :pincode_makedb => 'True',
+        :pincode_makedb => 'True'
       }
 
   $secret_engine,
