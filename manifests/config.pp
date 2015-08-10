@@ -24,7 +24,6 @@ class totpcgi::config (
   $provisioning_config,
   $provisioning_group,
   $provisioning_owner,
-  $encrypt_secret,
   $window_size,
   $require_pincode,
   $success_string,

@@ -27,13 +27,25 @@ describe 'totpcgi::config' do
   context 'with basic config defaults' do
     let(:params) {
       {
-        :totpcgi_config_dir => '/etc/totpcgi',
         :totpcgi_config => '/etc/totpcgi/totpcgi.conf',
+        :totpcgi_config_dir => '/etc/totpcgi',
         :totpcgi_group      => 'totpcgi',
         :totpcgi_owner      => 'totpcgi',
         :provisioning_config  => '/etc/totpcgi/provisioning.conf',
         :provisioning_owner   => 'totpcgiprov',
         :provisioning_group   => 'totpcgiprov',
+        :window_size        => '3',
+        :require_pincode    => 'False',
+        :success_string     => 'OK',
+        :encrypt_secret     => 'False',
+        :rate_limit         => '3 30',
+        :scratch_tokens_n   => '5',
+        :bits               => '80',
+        :totp_user_mask     => '$username@example.com',
+        :action_url         => '/index.cgi',
+        :css_root           => '/',
+        :templates_dir      => "${totpcgi_config_dir}/templates",
+        :trust_http_auth    => 'False',
         :secret_engine  => 'file',
         :secrets_dir    => '/etc/totpcgi/totp',
         :state_engine   => 'file',
@@ -41,8 +53,14 @@ describe 'totpcgi::config' do
         :pincode_engine => 'file',
         :pincode_file   => '/etc/totpcgi/pincodes',
         :pincode_usehash => 'sha256',
-        :pincode_makedb => 'True'
+        :pincode_makedb => 'True',
       }
+
+  $secret_engine,
+  $pincode_engine,
+  $pincode_usehash,
+  $pincode_makedb,
+  $state_engine,
     }
 
     it { should contain_file('/etc/totpcgi').with(
