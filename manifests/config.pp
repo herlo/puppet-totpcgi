@@ -122,11 +122,17 @@ class totpcgi::config (
     }
   }
 
+  # enable httpd_unified SELinux boolean
+  selboolean {'httpd_unified':
+    persistent => true,
+    value      => on,
+  }
+
   if $broken_selinux_python_policy {
-      include selinux::base
-      selinux::module { 'mytotpcgi':
-        source => 'puppet:///modules/totpcgi/mytotpcgi.te'
-      }
+    include selinux::base
+    selinux::module { 'mytotpcgi':
+      source => 'puppet:///modules/totpcgi/mytotpcgi.te'
+    }
   }
 
 }
