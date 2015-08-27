@@ -68,7 +68,7 @@ class totpcgi::config (
 
   file { $totpcgi_config_dir:
     ensure => directory,
-    seltype => 'totpcgi_private_etc_t',
+    seltype => 'totpcgi_etc_t',
     owner  => $provisioning_owner,
     group  => $totpcgi_group,
     mode   => '0750',
@@ -76,7 +76,7 @@ class totpcgi::config (
 
   file { $totpcgi_config:
     ensure  => file,
-    seltype => 'totpcgi_private_etc_t',
+    seltype => 'totpcgi_etc_t',
     owner   => $totpcgi_owner,
     group   => $totpcgi_group,
     mode    => '0640',
@@ -85,7 +85,7 @@ class totpcgi::config (
 
   file { $provisioning_config:
     ensure  => file,
-    seltype => 'totpcgi_private_etc_t',
+    seltype => 'totpcgi_etc_t',
     owner   => $provisioning_owner,
     group   => $provisioning_group,
     mode    => '0640',
@@ -104,10 +104,11 @@ class totpcgi::config (
 
   if $pincode_engine == 'file' {
     file { $pincode_file:
-      ensure => file,
-      owner  => 'root',
-      group  => $totpcgi_group,
-      mode   => '0640',
+      ensure  => file,
+      seltype => 'totpcgi_private_etc_t',
+      owner   => 'root',
+      group   => $totpcgi_group,
+      mode    => '0640',
     }
   }
 
@@ -120,7 +121,7 @@ class totpcgi::config (
   if $state_engine == 'file' {
     file { $state_dir:
       ensure => directory,
-      seltype => 'totpcgi_private_etc_t',
+      seltype => 'totpcgi_script_var_lib_t',
       owner  => $provisioning_owner,
       group  => $totpcgi_group,
       mode   => '0770',
