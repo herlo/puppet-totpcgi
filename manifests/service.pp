@@ -97,10 +97,11 @@ class totpcgi::service (
   }
 
   file { "${docroot}/index.cgi":
-    ensure => file,
-    owner  => $totpcgi_owner,
-    group  => $totpcgi_group,
-    mode   => '0550',
+    ensure  => file,
+    seltype => 'totpcgi_script_exec_t',
+    owner   => $totpcgi_owner,
+    group   => $totpcgi_group,
+    mode    => '0550',
   }
 
   if $provisioning == 'manual' {
