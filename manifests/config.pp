@@ -68,6 +68,7 @@ class totpcgi::config (
 
   file { $totpcgi_config_dir:
     ensure => directory,
+    seltype => 'totpcgi_private_etc_t',
     owner  => $provisioning_owner,
     group  => $totpcgi_group,
     mode   => '0750',
@@ -75,6 +76,7 @@ class totpcgi::config (
 
   file { $totpcgi_config:
     ensure  => file,
+    seltype => 'totpcgi_private_etc_t',
     owner   => $totpcgi_owner,
     group   => $totpcgi_group,
     mode    => '0640',
@@ -83,6 +85,7 @@ class totpcgi::config (
 
   file { $provisioning_config:
     ensure  => file,
+    seltype => 'totpcgi_private_etc_t',
     owner   => $provisioning_owner,
     group   => $provisioning_group,
     mode    => '0640',
@@ -91,10 +94,11 @@ class totpcgi::config (
 
   if $secret_engine == 'file' {
     file { $secrets_dir:
-      ensure => directory,
-      owner  => $provisioning_owner,
-      group  => $totpcgi_group,
-      mode   => '0750',
+      ensure  => directory,
+      seltype => 'totpcgi_private_etc_t',
+      owner   => $provisioning_owner,
+      group   => $totpcgi_group,
+      mode    => '0750',
     }
   }
 
@@ -116,6 +120,7 @@ class totpcgi::config (
   if $state_engine == 'file' {
     file { $state_dir:
       ensure => directory,
+      seltype => 'totpcgi_private_etc_t',
       owner  => $provisioning_owner,
       group  => $totpcgi_group,
       mode   => '0770',
