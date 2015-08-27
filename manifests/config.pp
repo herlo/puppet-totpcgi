@@ -67,11 +67,11 @@ class totpcgi::config (
 ) {
 
   file { $totpcgi_config_dir:
-    ensure => directory,
+    ensure  => directory,
     seltype => 'totpcgi_etc_t',
-    owner  => $provisioning_owner,
-    group  => $totpcgi_group,
-    mode   => '0750',
+    owner   => $provisioning_owner,
+    group   => $totpcgi_group,
+    mode    => '0750',
   }
 
   file { $totpcgi_config:
@@ -120,11 +120,11 @@ class totpcgi::config (
 
   if $state_engine == 'file' {
     file { $state_dir:
-      ensure => directory,
+      ensure  => directory,
       seltype => 'totpcgi_script_var_lib_t',
-      owner  => $provisioning_owner,
-      group  => $totpcgi_group,
-      mode   => '0770',
+      owner   => $provisioning_owner,
+      group   => $totpcgi_group,
+      mode    => '0770',
     }
   }
 
